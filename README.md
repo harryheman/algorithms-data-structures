@@ -10,7 +10,7 @@
 
 ```bash
 # Клонируем репозиторий
-git clone
+git clone https://github.com/harryheman/algorithms-data-structures.git
 
 # Переходим в директорию проекта
 cd algorithms-data-structures

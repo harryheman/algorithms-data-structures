@@ -1,28 +1,26 @@
 module.exports = {
-  // The bail config option can be used here to have Jest stop running tests after
-  // the first failure.
+  // Если эта настройка имеет значение `true`, Jest перестанет выполнять тесты
+  // после первого провала.
   bail: false,
 
-  // Indicates whether each individual test should be reported during the run.
+  // Если эта настройка имеет значение `true`, Jest будет представлять отчет о каждом тесте.
   verbose: false,
 
-  // Indicates whether the coverage information should be collected while executing the test
+  // Индикатор сбора информации о покрытии во время выполнения тестов.
   collectCoverage: false,
 
-  // The directory where Jest should output its coverage files.
+  // Директория для файлов о покрытии.
   coverageDirectory: './coverage/',
 
-  // If the test path matches any of the patterns, it will be skipped.
+  // Паттерны игнорируемых тестов.
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
 
-  // If the file path matches any of the patterns, coverage information will be skipped.
+  // Паттерны тестов, игнорируемых при сборе информации о покрытии.
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
 
-  // The pattern Jest uses to detect test files.
+  // Паттерн тестовых файлов.
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$',
 
-  // This option sets the URL for the jsdom environment.
-  // It is reflected in properties such as location.href.
   // @see: https://github.com/facebook/jest/issues/6769
   testEnvironmentOptions: {
     url: 'http://localhost/',
