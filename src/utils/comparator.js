@@ -1,10 +1,10 @@
 export default class Comparator {
   constructor(fn) {
-    this.compare = fn || Comparator.defaultCompareFunction
+    this.compare = fn || Comparator.defaultCompare
   }
 
   // Дефолтная функция сравнения узлов
-  static defaultCompareFunction(a, b) {
+  static defaultCompare(a, b) {
     if (a === b) {
       return 0
     }

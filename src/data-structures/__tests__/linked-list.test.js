@@ -1,12 +1,11 @@
-import DoublyLinkedList, { Node } from '../doubly-linked-list'
+import LinkedList, { Node } from '../linked-list'
 
-describe('DoublyLinkedListNode', () => {
+describe('LinkedListNode', () => {
   it('должен создать узел с указанным значением', () => {
     const node = new Node(1)
 
     expect(node.value).toBe(1)
     expect(node.next).toBeNull()
-    expect(node.prev).toBeNull()
   })
 
   it('должен создать узел с объектом в качестве значения', () => {
@@ -16,24 +15,16 @@ describe('DoublyLinkedListNode', () => {
     expect(node.value.value).toBe(1)
     expect(node.value.key).toBe('test')
     expect(node.next).toBeNull()
-    expect(node.prev).toBeNull()
   })
 
   it('должен соединить узлы вместе', () => {
     const node2 = new Node(2)
     const node1 = new Node(1, node2)
-    const node3 = new Node(10, node1, node2)
 
     expect(node1.next).toBeDefined()
-    expect(node1.prev).toBeNull()
     expect(node2.next).toBeNull()
-    expect(node2.prev).toBeNull()
-    expect(node3.next).toBeDefined()
-    expect(node3.prev).toBeDefined()
     expect(node1.value).toBe(1)
     expect(node1.next.value).toBe(2)
-    expect(node3.next.value).toBe(1)
-    expect(node3.prev.value).toBe(2)
   })
 
   it('должен преобразовать узел в строку', () => {
@@ -55,14 +46,14 @@ describe('DoublyLinkedListNode', () => {
   })
 })
 
-describe('DoublyLinkedList', () => {
-  it('должен создать пустой двусвязный список', () => {
-    const linkedList = new DoublyLinkedList()
+describe('LinkedList', () => {
+  it('должен создать пустой связный список', () => {
+    const linkedList = new LinkedList()
     expect(linkedList.toString()).toBe('')
   })
 
   it('должен добавить узлы в конец списка', () => {
-    const linkedList = new DoublyLinkedList()
+    const linkedList = new LinkedList()
 
     expect(linkedList.head).toBeNull()
     expect(linkedList.tail).toBeNull()
@@ -70,13 +61,12 @@ describe('DoublyLinkedList', () => {
     linkedList.append(1)
     linkedList.append(2)
 
-    expect(linkedList.head.next.value).toBe(2)
-    expect(linkedList.tail.prev.value).toBe(1)
     expect(linkedList.toString()).toBe('1,2')
+    expect(linkedList.tail.next).toBeNull()
   })
 
-  it('должен добавить узлы в конец списка', () => {
-    const linkedList = new DoublyLinkedList()
+  it('должен добавить узлы в начало списка', () => {
+    const linkedList = new LinkedList()
 
     linkedList.prepend(2)
     expect(linkedList.head.toString()).toBe('2')
@@ -85,21 +75,26 @@ describe('DoublyLinkedList', () => {
     linkedList.append(1)
     linkedList.prepend(3)
 
-    expect(linkedList.head.next.next.prev).toBe(linkedList.head.next)
-    expect(linkedList.tail.prev.next).toBe(linkedList.tail)
-    expect(linkedList.tail.prev.value).toBe(2)
     expect(linkedList.toString()).toBe('3,2,1')
   })
 
-  it('должен создать список из массива', () => {
-    const linkedList = new DoublyLinkedList()
-    linkedList.fromArray([1, 1, 2, 3, 3, 3, 4, 5])
+  it('должен добавить узлы по указанным индексам', () => {
+    const linkedList = new LinkedList()
 
-    expect(linkedList.toString()).toBe('1,1,2,3,3,3,4,5')
+    linkedList.insert(4, 3)
+    expect(linkedList.head.toString()).toBe('4')
+    expect(linkedList.tail.toString()).toBe('4')
+
+    linkedList.insert(3, 2)
+    linkedList.insert(2, 1)
+    linkedList.insert(1, -7)
+    linkedList.insert(10, 9)
+
+    expect(linkedList.toString()).toBe('1,4,2,3,10')
   })
 
   it('должен удалить узлы по значениям', () => {
-    const linkedList = new DoublyLinkedList()
+    const linkedList = new LinkedList()
 
     expect(linkedList.remove(5)).toBeNull()
 
@@ -117,7 +112,6 @@ describe('DoublyLinkedList', () => {
 
     const removedNode = linkedList.remove(3)
     expect(removedNode.value).toBe(3)
-    expect(linkedList.tail.prev.prev.value).toBe(2)
     expect(linkedList.toString()).toBe('1,1,2,4,5')
 
     linkedList.remove(3)
@@ -127,8 +121,6 @@ describe('DoublyLinkedList', () => {
     expect(linkedList.toString()).toBe('2,4,5')
 
     expect(linkedList.head.toString()).toBe('2')
-    expect(linkedList.head.next.next).toBe(linkedList.tail)
-    expect(linkedList.tail.prev.prev).toBe(linkedList.head)
     expect(linkedList.tail.toString()).toBe('5')
 
     linkedList.remove(5)
@@ -142,16 +134,13 @@ describe('DoublyLinkedList', () => {
 
     expect(linkedList.head.toString()).toBe('2')
     expect(linkedList.tail.toString()).toBe('2')
-    expect(linkedList.head).toBe(linkedList.tail)
 
     linkedList.remove(2)
     expect(linkedList.toString()).toBe('')
   })
 
   it('должен удалить хвостовые узлы', () => {
-    const linkedList = new DoublyLinkedList()
-
-    expect(linkedList.removeTail()).toBeNull()
+    const linkedList = new LinkedList()
 
     linkedList.append(1)
     linkedList.append(2)
@@ -183,7 +172,7 @@ describe('DoublyLinkedList', () => {
   })
 
   it('должен удалить головные узлы', () => {
-    const linkedList = new DoublyLinkedList()
+    const linkedList = new LinkedList()
 
     expect(linkedList.removeHead()).toBeNull()
 
@@ -196,7 +185,6 @@ describe('DoublyLinkedList', () => {
     const removedNode1 = linkedList.removeHead()
 
     expect(removedNode1.value).toBe(1)
-    expect(linkedList.head.prev).toBeNull()
     expect(linkedList.toString()).toBe('2')
     expect(linkedList.head.toString()).toBe('2')
     expect(linkedList.tail.toString()).toBe('2')
@@ -209,8 +197,8 @@ describe('DoublyLinkedList', () => {
     expect(linkedList.tail).toBeNull()
   })
 
-  it('должна быть возможность сохранять в списке объекты', () => {
-    const linkedList = new DoublyLinkedList()
+  it('должен добавить в список значения в виде объектов', () => {
+    const linkedList = new LinkedList()
 
     const nodeValue1 = { value: 1, key: 'key1' }
     const nodeValue2 = { value: 2, key: 'key2' }
@@ -223,7 +211,7 @@ describe('DoublyLinkedList', () => {
   })
 
   it('должен найти узлы по значениям', () => {
-    const linkedList = new DoublyLinkedList()
+    const linkedList = new LinkedList()
 
     expect(linkedList.find({ value: 5 })).toBeNull()
 
@@ -239,7 +227,7 @@ describe('DoublyLinkedList', () => {
   })
 
   it('должен найти узлы с помощью кастомной функции', () => {
-    const linkedList = new DoublyLinkedList()
+    const linkedList = new LinkedList()
 
     linkedList
       .append({ value: 1, key: 'test1' })
@@ -263,7 +251,7 @@ describe('DoublyLinkedList', () => {
       return a.customValue < b.customValue ? -1 : 1
     }
 
-    const linkedList = new DoublyLinkedList(comparatorFunction)
+    const linkedList = new LinkedList(comparatorFunction)
 
     linkedList
       .append({ value: 1, customValue: 'test1' })
@@ -277,51 +265,59 @@ describe('DoublyLinkedList', () => {
     expect(node).toBeDefined()
     expect(node.value.value).toBe(2)
     expect(node.value.customValue).toBe('test2')
-    expect(linkedList.find({ value: 2, customValue: 'test5' })).toBeNull()
+    expect(
+      linkedList.find({ value: { value: 2, customValue: 'test5' } }),
+    ).toBeNull()
+  })
+
+  it('должен применять функции для поиска узлов в правильном порядке (сначала применяется функция, переданная в объекте, при вызове метода `find`)', () => {
+    const greaterThan = (value, compareTo) => (value > compareTo ? 0 : 1)
+
+    const linkedList = new LinkedList(greaterThan)
+    linkedList.fromArray([1, 2, 3, 4, 5])
+
+    let node = linkedList.find({ value: 3 })
+    expect(node.value).toBe(4)
+
+    node = linkedList.find({ cb: (value) => value < 3 })
+    expect(node.value).toBe(1)
+  })
+
+  it('должен создать список из массива', () => {
+    const linkedList = new LinkedList()
+    linkedList.fromArray([1, 1, 2, 3, 3, 3, 4, 5])
+
+    expect(linkedList.toString()).toBe('1,1,2,3,3,3,4,5')
+  })
+
+  it('должен преобразовать список в массив', () => {
+    const linkedList = new LinkedList()
+    linkedList.append(1)
+    linkedList.append(2)
+    linkedList.append(3)
+    expect(linkedList.toArray().join(',')).toBe('1,2,3')
   })
 
   it('должен инвертировать список', () => {
-    const linkedList = new DoublyLinkedList()
+    const linkedList = new LinkedList()
 
     // Добавляем тестовые значения в список
-    linkedList.append(1).append(2).append(3).append(4)
+    linkedList.append(1).append(2).append(3)
 
-    expect(linkedList.toString()).toBe('1,2,3,4')
+    expect(linkedList.toString()).toBe('1,2,3')
     expect(linkedList.head.value).toBe(1)
-    expect(linkedList.tail.value).toBe(4)
+    expect(linkedList.tail.value).toBe(3)
 
     // Инвертируем список
     linkedList.reverse()
-
-    expect(linkedList.toString()).toBe('4,3,2,1')
-
-    expect(linkedList.head.prev).toBeNull()
-    expect(linkedList.head.value).toBe(4)
-    expect(linkedList.head.next.value).toBe(3)
-    expect(linkedList.head.next.next.value).toBe(2)
-    expect(linkedList.head.next.next.next.value).toBe(1)
-
-    expect(linkedList.tail.next).toBeNull()
+    expect(linkedList.toString()).toBe('3,2,1')
+    expect(linkedList.head.value).toBe(3)
     expect(linkedList.tail.value).toBe(1)
-    expect(linkedList.tail.prev.value).toBe(2)
-    expect(linkedList.tail.prev.prev.value).toBe(3)
-    expect(linkedList.tail.prev.prev.prev.value).toBe(4)
 
     // Инвертируем список обратно в начальное состояние
     linkedList.reverse()
-
-    expect(linkedList.toString()).toBe('1,2,3,4')
-
-    expect(linkedList.head.prev).toBeNull()
+    expect(linkedList.toString()).toBe('1,2,3')
     expect(linkedList.head.value).toBe(1)
-    expect(linkedList.head.next.value).toBe(2)
-    expect(linkedList.head.next.next.value).toBe(3)
-    expect(linkedList.head.next.next.next.value).toBe(4)
-
-    expect(linkedList.tail.next).toBeNull()
-    expect(linkedList.tail.value).toBe(4)
-    expect(linkedList.tail.prev.value).toBe(3)
-    expect(linkedList.tail.prev.prev.value).toBe(2)
-    expect(linkedList.tail.prev.prev.prev.value).toBe(1)
+    expect(linkedList.tail.value).toBe(3)
   })
 })
