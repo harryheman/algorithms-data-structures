@@ -1,13 +1,13 @@
 import PriorityQueue from '../priority-queue'
 
 describe('PriorityQueue', () => {
-  it('должен создавать дефолтную очередь с приоритетом', () => {
+  it('должен создать дефолтную очередь с приоритетом', () => {
     const priorityQueue = new PriorityQueue()
 
     expect(priorityQueue).toBeDefined()
   })
 
-  it('должен добавлять элементы с приоритетом в очередь', () => {
+  it('должен добавить элементы с приоритетом в очередь', () => {
     const priorityQueue = new PriorityQueue()
 
     priorityQueue.add(10, 1)
@@ -20,7 +20,7 @@ describe('PriorityQueue', () => {
     expect(priorityQueue.peek()).toBe(100)
   })
 
-  it('должен проверять возможность использовать объекты в очереди', () => {
+  it('должен добавить в очередь объекты', () => {
     const priorityQueue = new PriorityQueue()
 
     const user1 = { name: 'Mike' }
@@ -37,7 +37,7 @@ describe('PriorityQueue', () => {
     expect(priorityQueue.peek()).toBe(user3)
   })
 
-  it('должен извлекать элементы из очереди согласно приоритету', () => {
+  it('должен извлечь элементы из очереди согласно приоритету', () => {
     const priorityQueue = new PriorityQueue()
 
     priorityQueue.add(10, 1)
@@ -51,7 +51,7 @@ describe('PriorityQueue', () => {
     expect(priorityQueue.poll()).toBe(5)
   })
 
-  it('должен проверять возможность изменения приоритета головного узла', () => {
+  it('должен обновить приоритеты головных узлов', () => {
     const priorityQueue = new PriorityQueue()
 
     priorityQueue.add(10, 1)
@@ -70,7 +70,7 @@ describe('PriorityQueue', () => {
     expect(priorityQueue.poll()).toBe(10)
   })
 
-  it('должен проверять возможность изменения приоритета внутренних узлов', () => {
+  it('должен обновить приоритеты внутренних узлов', () => {
     const priorityQueue = new PriorityQueue()
 
     priorityQueue.add(10, 1)
@@ -89,7 +89,7 @@ describe('PriorityQueue', () => {
     expect(priorityQueue.poll()).toBe(10)
   })
 
-  it('должен проверять возможность изменения приоритета и добавления узлов', () => {
+  it('должен обновить приоритеты и добавить элемент', () => {
     const priorityQueue = new PriorityQueue()
 
     priorityQueue.add(10, 1)
@@ -109,7 +109,7 @@ describe('PriorityQueue', () => {
     expect(priorityQueue.poll()).toBe(10)
   })
 
-  it('должен находить элементы по значению', () => {
+  it('должен определить наличие значений элементов', () => {
     const priorityQueue = new PriorityQueue()
 
     priorityQueue.add(10, 1)

@@ -1,65 +1,75 @@
+// Импортируем конструктор функции сравнения узлов
 import Comparator from '../utils/comparator'
-import MinHeap from './heap/MinHeap'
+// Импортируем конструктор min-кучи
+import MinHeap from './heap/min-heap'
 
-// очередь с приоритетом
-// расширяет min-кучу
+// Очередь с приоритетом.
+// Реализация на основе min-кучи
 export default class PriorityQueue extends MinHeap {
   constructor() {
-    // инициализируем min-кучу
+    // Инициализируем min-кучу
     super()
-    // приоритеты
+    // Карта приоритетов
     this.priorities = new Map()
-    // функция сравнения
-    this.compare = new Comparator(this.comparePriority.bind(this))
+    // Функция сравнения элементов
+    this.compare = new Comparator(this.comparePriorities.bind(this))
   }
 
-  // добавление элемента в очередь с приоритетом
+  // Добавляет элемент в очередь.
+  // Принимает элемент и приоритет.
+  // Чем больше приоритет (меньше значение `priority`),
+  // тем "выше" элемент находится в очереди
   add(item, priority = 0) {
-    // обновляем приоритеты
+    // Обновляем приоритеты
     this.priorities.set(item, priority)
-    // добавляем элемент в min-кучу
+    // Добавляем элемент в кучу
     super.add(item)
-    // это позволяет вызывать методы по цепочке
+
     return this
   }
 
-  // удаление элемента
+  // Удаляет элемент из очереди.
+  // Принимает элемент и кастомную функцию сравнения элементов
   remove(item, compare) {
-    // удаляем элемент из min-кучи
+    // Удаляем элемент из кучи
     super.remove(item, compare)
-    // обновляем приоритеты
+    // Обновляем приоритеты
     this.priorities.delete(item)
+
     return this
   }
 
-  // меняем приоритет
+  // Обновляет приоритет.
+  // Принимает элемент и новый приоритет
   changePriority(item, priority) {
-    // удаляем элемент
-    this.remove(item, new Comparator(this.compareValue))
-    // добавляем элемент с новым приоритетом
+    // Удаляем элемент из очереди
+    this.remove(item, new Comparator(this.compareValues))
+    // Добавляем элемент с новым приоритетом
     this.add(item, priority)
+
     return this
   }
 
-  // поиск элемента по значению
-  // возвращается массив индексов
+  // Ищет элемент по значению.
+  // Возвращает массив индексов
   findByValue(item) {
-    return this.find(item, new Comparator(this.compareValue))
+    return this.find(item, new Comparator(this.compareValues))
   }
 
-  // проверка наличия значения
+  // Определяет наличие элемента
   hasValue(item) {
     return this.findByValue(item).length > 0
   }
 
-  // функция сравнения приоритетов
-  comparePriority(a, b) {
-    // вызываем функцию сравнения значений, передавая ей значения карты приоритетов
-    return this.compareValue(this.priorities.get(a), this.priorities.get(b))
+  // Сравнивает приоритеты
+  comparePriorities(a, b) {
+    // Вызываем функцию сравнения значений,
+    // передавая ей приоритеты
+    return this.compareValues(this.priorities.get(a), this.priorities.get(b))
   }
 
-  // функция сравнения значений
-  compareValue(a, b) {
+  // Сравнивает значения
+  compareValues(a, b) {
     if (a === b) {
       return 0
     }

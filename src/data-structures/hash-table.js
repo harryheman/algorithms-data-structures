@@ -1,86 +1,100 @@
+// Импортируем конструктор связного списка
+// (мы будем использовать метод цепочек для разрешения коллизий)
 import LinkedList from './linked-list'
 
-// дефолтный размер таблицы
-const defaultHashTableSize = 32
+// Дефолтный размер таблицы
+// (в реальности размер будет намного больше)
+const defaultSize = 32
 
-// хеш-таблица
+// Хэш-таблица
 export default class HashTable {
-  constructor(size = defaultHashTableSize) {
-    // создаем хеш-таблицу указанного размера и заполняем ее пустыми связанными списками
-    this.buckets = Array(size)
-      .fill()
-      .map(() => new LinkedList())
-    // позволяет быстро получать информацию об актуальных ключах
+  constructor(size = defaultSize) {
+    // Создаем таблицу указанного размера и
+    // заполняем ее пустыми связными списками
+    this.buckets = new Array(size).fill(null).map(() => new LinkedList())
+    // Хранилище ключей
     this.keys = {}
   }
 
-  // преобразование ключа в хеш-значение
+  // Преобразует ключ в хэшированное значение
+  // (хэш-функция)
   hash(key) {
-    // для простоты в качестве хеша используется сумма кодов символов ключа
+    // Для простоты в качестве хэша используется сумма кодов символов ключа
+    // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
     const hash = [...key].reduce((acc, char) => acc + char.charCodeAt(0), 0)
-    // значение не должно превышать размер таблицы
+    // Хэшированное значение не должно превышать размера таблицы
     return hash % this.buckets.length
   }
 
-  // установка значения по ключу
+  // Устанавливает значение по ключу
   set(key, value) {
-    // хешируем ключ
+    // Хэшируем ключ
+    // (получаем индекс массива)
     const index = this.hash(key)
-    // сохраняем хеш по ключу
+    // Сохраняем хэш по ключу
     this.keys[key] = index
-    // извлекаем список
+    // Извлекаем нужный список
     const bucket = this.buckets[index]
-    // извлекаем узел
+    // Извлекаем узел
+    // (значением узла является объект)
     const node = bucket.find({ cb: (value) => value.key === key })
-    // если узел не найден
+    // Если узел не найден
     if (!node) {
-      // добавляем новый узел
+      // Добавляем новый узел
       bucket.append({ key, value })
     } else {
-      // иначе, обновляем значение узла
+      // Иначе, обновляем значение узла
       node.value.value = value
     }
   }
 
+  // Удаляет значение по ключу
   remove(key) {
-    // хешируем ключ
+    // Хэшируем ключ
     const index = this.hash(key)
-    // удаляем хеш по ключу
+    // Удаляем хэш по ключу
     delete this.keys[key]
-    // извлекаем список
+    // Извлекаем нужный список
     const bucket = this.buckets[index]
-    // извлекаем узел
+    // Извлекаем узел
     const node = bucket.find({ cb: (value) => value.key === key })
-    // возвращаем удаленный узел или null
+    // Возвращаем удаленный узел или `null`,
+    // если узел отсутствует
     return node ? bucket.remove(node.value) : null
   }
 
-  // получение значения по ключу
+  // Возвращает значение по ключу
   get(key) {
-    // хешируем ключ
+    // Хэшируем ключ
     const index = this.hash(key)
-    // извлекаем список
+    // Извлекаем нужный список
     const bucket = this.buckets[index]
-    // извлекаем узел
+    // Извлекаем узел
     const node = bucket.find({ cb: (value) => value.key === key })
-    // возвращаем значение узла или null
+    // Возвращаем значение узла или `null`,
+    // если узел отсутствует
     return node ? node.value.value : null
   }
 
-  // проверка наличия ключа
+  // Определяет наличие ключа
   has(key) {
-    return !!this.keys[key]
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn
+    return Object.hasOwn(this.keys, key)
   }
 
-  // получение всех ключей
+  // Возвращает все ключи
   getKeys() {
     return Object.keys(this.keys)
   }
 
-  // получение всех значений
+  // Возвращает все значения
   getValues() {
+    // Перебираем списки и возвращаем значения всех узлов
     return this.buckets.reduce((acc, bucket) => {
-      return acc.concat(bucket.toArray().map((node) => node.value.value))
+      return acc.concat(
+        // Метод `toArray` преобразует связный список в массив
+        bucket.toArray().map((node) => node.value.value),
+      )
     }, [])
   }
 }
