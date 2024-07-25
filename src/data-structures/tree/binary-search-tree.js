@@ -1,7 +1,7 @@
 import BinaryTreeNode from './binary-tree-node'
 import Comparator from '../../utils/comparator'
 
-class Node extends BinaryTreeNode {
+export class BinarySearchTreeNode extends BinaryTreeNode {
   constructor(value = null, fn) {
     super(value)
 
@@ -9,30 +9,42 @@ class Node extends BinaryTreeNode {
     this.nodeValueComparator = new Comparator(fn)
   }
 
+  // Добавляет значение (узел)
   insert(value) {
-    if (!this.value) {
+    // Если значение отсутствует
+    if (this.nodeValueComparator.equal(this.value, null)) {
       this.value = value
 
       return this
     }
 
-    if (this.nodeValueComparator.lessThan(this.value, value)) {
+    // Если новое значение меньше текущего
+    if (this.nodeValueComparator.lessThan(value, this.value)) {
+      // Если имеется левый потомок,
       if (this.left) {
+        // добавляем значение в него
         return this.left.insert(value)
       }
 
-      const newNode = new Node(value, this.compareFn)
+      // Создаем новый узел
+      const newNode = new BinarySearchTreeNode(value, this.compareFn)
+      // и делаем его левым потомком
       this.setLeft(newNode)
 
       return newNode
     }
 
-    if (this.nodeValueComparator.greaterThan(this.value, value)) {
+    // Если новое значение больше текущего
+    if (this.nodeValueComparator.greaterThan(value, this.value)) {
+      // Если имеется правый потомок,
       if (this.right) {
+        // добавляем значение в него
         return this.right.insert(value)
       }
 
-      const newNode = new Node(value, this.compareFn)
+      // Создаем новый узел
+      const newNode = new BinarySearchTreeNode(value, this.compareFn)
+      // и делаем его правым потомком
       this.setRight(newNode)
 
       return newNode
@@ -41,51 +53,45 @@ class Node extends BinaryTreeNode {
     return this
   }
 
-  find(value) {
-    if (this.nodeValueComparator.equal(this.value, value)) {
-      return this
-    }
-
-    if (this.nodeValueComparator.lessThan(this.value, value) && this.left) {
-      return this.left.find(value)
-    }
-
-    if (this.nodeValueComparator.greaterThan(this.value, value) && this.right) {
-      return this.right.find(value)
-    }
-
-    return null
-  }
-
-  contains(value) {
-    return !!this.find(value)
-  }
-
+  // Удаляет узел по значению
   remove(value) {
+    // Ищем удаляемый узел
     const nodeToRemove = this.find(value)
 
     if (!nodeToRemove) {
       return null
     }
 
+    // Извлекаем предка
     const { parent } = nodeToRemove
 
     if (!nodeToRemove.left && !nodeToRemove.right) {
+      // Узел является листовым, т.е. не имеет потомков
       if (parent) {
+        // У узла есть предок. Просто удаляем указатель на этот узел у предка
         parent.removeChild(nodeToRemove)
       } else {
+        // У узла нет предка. Обнуляем значение текущего узла
         nodeToRemove.setValue(null)
       }
     } else if (nodeToRemove.left && nodeToRemove.right) {
+      // Узел имеет двух потомков.
+      // Находим следующее большее значение (минимальное значение в правом поддереве)
+      // и заменяем им значение текущего узла
       const nextBiggerNode = nodeToRemove.right.findMin()
       if (!this.nodeComparator.equal(nextBiggerNode, nodeToRemove.right)) {
         this.remove(nextBiggerNode.value)
         nodeToRemove.setValue(nextBiggerNode.value)
       } else {
+        // В случае, когда следующее правое значение является следующим большим значением,
+        // и этот узел не имеет левого потомка,
+        // просто заменяем удаляемый узел правым
         nodeToRemove.setValue(nodeToRemove.right.value)
         nodeToRemove.setRight(nodeToRemove.right.right)
       }
     } else {
+      // Узел имеет одного потомка.
+      // Делаем этого потомка прямым потомком предка текущего узла
       const childNode = nodeToRemove.left || nodeToRemove.right
 
       if (parent) {
@@ -95,11 +101,38 @@ class Node extends BinaryTreeNode {
       }
     }
 
+    // Обнуляем предка удаленного узла
     nodeToRemove.parent = null
 
-    return this``
+    return true
   }
 
+  // Ищет узел по значению
+  find(value) {
+    // Проверяем корень
+    if (this.nodeValueComparator.equal(this.value, value)) {
+      return this
+    }
+
+    if (this.nodeValueComparator.lessThan(value, this.value) && this.left) {
+      // Проверяем левое поддерево
+      return this.left.find(value)
+    }
+
+    if (this.nodeValueComparator.greaterThan(value, this.value) && this.right) {
+      // Проверяем правое поддерево
+      return this.right.find(value)
+    }
+
+    return null
+  }
+
+  // Определяет наличие узла
+  contains(value) {
+    return Boolean(this.find(value))
+  }
+
+  // Ищет узел с минимальным значением (нижний левый)
   findMin() {
     if (!this.left) {
       return this
@@ -111,23 +144,28 @@ class Node extends BinaryTreeNode {
 
 export default class BinarySearchTree {
   constructor(compareFn) {
-    this.root = new Node(null, compareFn)
-
+    // Корневой узел
+    this.root = new BinarySearchTreeNode(null, compareFn)
+    // Функция сравнения узлов
     this.nodeComparator = this.root.nodeComparator
   }
 
+  // Добавляет значение
   insert(value) {
     return this.root.insert(value)
   }
 
-  contains(value) {
-    return this.root.contains(value)
-  }
-
+  // Удаляет узел по значению
   remove(value) {
     return this.root.remove(value)
   }
 
+  // Определяет наличие узла
+  contains(value) {
+    return this.root.contains(value)
+  }
+
+  // Возвращает строковое представление дерева
   toString() {
     return this.root.toString()
   }
