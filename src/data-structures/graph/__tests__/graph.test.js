@@ -3,7 +3,7 @@ import Node from '../node'
 import Edge from '../edge'
 
 describe('Graph', () => {
-  it('должна добавить узлы в граф', () => {
+  it('должен добавить узлы в граф', () => {
     const graph = new Graph()
 
     const nodeA = new Node('A')
@@ -16,7 +16,7 @@ describe('Graph', () => {
     expect(graph.getNodeByKey(nodeB.getKey())).toEqual(nodeB)
   })
 
-  it('должна добавить ребра в ненаправленный граф', () => {
+  it('должен добавить ребра в ненаправленный граф', () => {
     const graph = new Graph()
 
     const nodeA = new Node('A')
@@ -48,7 +48,7 @@ describe('Graph', () => {
     expect(graphNodeB.getNeighbors()[0]).toEqual(graphNodeA)
   })
 
-  it('должна добавить ребра в направленный граф', () => {
+  it('должен добавить ребра в направленный граф', () => {
     const graph = new Graph(true)
 
     const nodeA = new Node('A')
@@ -72,7 +72,7 @@ describe('Graph', () => {
     expect(graphNodeB.getNeighbors().length).toBe(0)
   })
 
-  it('должна найти ребро по узлам в ненаправленном графе', () => {
+  it('должен найти ребра по узлам в ненаправленном графе', () => {
     const graph = new Graph()
 
     const nodeA = new Node('A')
@@ -95,7 +95,7 @@ describe('Graph', () => {
     expect(graphEdgeAB.weight).toBe(10)
   })
 
-  it('должна найти ребро по узлам в направленном графе', () => {
+  it('должен найти ребра по узлам в направленном графе', () => {
     const graph = new Graph(true)
 
     const nodeA = new Node('A')
@@ -118,7 +118,7 @@ describe('Graph', () => {
     expect(graphEdgeAB.weight).toBe(10)
   })
 
-  it('должна вернуть соседей узла', () => {
+  it('должен вернуть соседей узла', () => {
     const graph = new Graph(true)
 
     const nodeA = new Node('A')
@@ -137,7 +137,7 @@ describe('Graph', () => {
     expect(neighbors[1]).toEqual(nodeC)
   })
 
-  it('должна выбросить исключение при повторном добавлении ребра', () => {
+  it('должен выбросить исключение при повторном добавлении ребра', () => {
     function addSameEdgeTwice() {
       const graph = new Graph(true)
 
@@ -152,7 +152,7 @@ describe('Graph', () => {
     expect(addSameEdgeTwice).toThrow()
   })
 
-  it('должна вернуть список всех добавленных узлов', () => {
+  it('должен вернуть список всех добавленных узлов', () => {
     const graph = new Graph(true)
 
     const nodeA = new Node('A')
@@ -171,7 +171,7 @@ describe('Graph', () => {
     expect(edges[1]).toEqual(edgeBC)
   })
 
-  it('должна вычислить общий вес дефолтного графа', () => {
+  it('должен вычислить общий вес дефолтного графа', () => {
     const graph = new Graph()
 
     const nodeA = new Node('A')
@@ -189,7 +189,7 @@ describe('Graph', () => {
     expect(graph.getWeight()).toBe(0)
   })
 
-  it('должна вычислить общий вес взвешенного графа', () => {
+  it('должен вычислить общий вес взвешенного графа', () => {
     const graph = new Graph()
 
     const nodeA = new Node('A')
@@ -207,7 +207,7 @@ describe('Graph', () => {
     expect(graph.getWeight()).toBe(10)
   })
 
-  it('должна быть возможность удалять ребра из графа', () => {
+  it('должен удалить ребра из графа', () => {
     const graph = new Graph()
 
     const nodeA = new Node('A')
@@ -229,7 +229,7 @@ describe('Graph', () => {
     expect(graph.getAllEdges()[1].getKey()).toBe(edgeAC.getKey())
   })
 
-  it('должна выбросить исключение при удалении несуществующего узла', () => {
+  it('должен выбросить исключение при удалении несуществующего узла', () => {
     function deleteNotExistingEdge() {
       const graph = new Graph()
 
@@ -247,7 +247,7 @@ describe('Graph', () => {
     expect(deleteNotExistingEdge).toThrowError()
   })
 
-  it('должна быть возможность инвертировать граф', () => {
+  it('должен инвертировать граф', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')
@@ -283,7 +283,7 @@ describe('Graph', () => {
     expect(graph.getNeighbors(nodeD)[0].getKey()).toBe(nodeC.getKey())
   })
 
-  it('должна вернуть индексы узлов', () => {
+  it('должен вернуть индексы узлов', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')
@@ -306,7 +306,7 @@ describe('Graph', () => {
     })
   })
 
-  it('должна генерировать матрицу смежности для ненаправленного графа', () => {
+  it('должен вернуть матрицу смежности для ненаправленного графа', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')
@@ -329,7 +329,7 @@ describe('Graph', () => {
     ])
   })
 
-  it('должна генерировать матрицу смежности для направленного графа', () => {
+  it('должен вернуть матрицу смежности для направленного графа', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')

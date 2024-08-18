@@ -2,7 +2,7 @@ import Node from '../node'
 import Edge from '../edge'
 
 describe('Node', () => {
-  it('должно выбрасываться исключение при создании узла без значения', () => {
+  it('должен выбросить исключение при создании узла без значения', () => {
     let node = null
 
     function createEmptyVertex() {
@@ -13,7 +13,7 @@ describe('Node', () => {
     expect(createEmptyVertex).toThrow()
   })
 
-  it('должна создать узел графа', () => {
+  it('должен создать узел графа', () => {
     const node = new Node('A')
 
     expect(node).toBeDefined()
@@ -24,7 +24,7 @@ describe('Node', () => {
     expect(node.getEdges()).toEqual([])
   })
 
-  it('должна добавить ребра в узел и проверить их наличие', () => {
+  it('должен добавить ребра в узел и определить их наличие', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
 
@@ -37,7 +37,7 @@ describe('Node', () => {
     expect(nodeA.getEdges()[0].toString()).toBe('A_B')
   })
 
-  it('должна удалить ребра из узла', () => {
+  it('должен удалить определенные ребра из узла', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')
@@ -96,7 +96,7 @@ describe('Node', () => {
     expect(nodeA.getEdges().length).toBe(0)
   })
 
-  it('должна вернуть соседей узла в случае, если текущий узел является стартовым', () => {
+  it('должен вернуть соседей узла в случае, если текущий узел является начальным', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')
@@ -114,7 +114,7 @@ describe('Node', () => {
     expect(neighbors[1]).toEqual(nodeC)
   })
 
-  it('должна вернуть соседей узла в случае, если текущий узел является конечным', () => {
+  it('должен вернуть соседей узла в случае, если текущий узел является конечным', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')
@@ -132,7 +132,7 @@ describe('Node', () => {
     expect(neighbors[1]).toEqual(nodeC)
   })
 
-  it('должна проверять наличие указанного соседа узла', () => {
+  it('должен определить наличие соседнего узла', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')
@@ -144,7 +144,7 @@ describe('Node', () => {
     expect(nodeA.hasNeighbor(nodeC)).toBe(false)
   })
 
-  it('должна находить ребро по узлу', () => {
+  it('должен найти ребро по узлу', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const nodeC = new Node('C')
@@ -156,7 +156,7 @@ describe('Node', () => {
     expect(nodeA.findEdge(nodeC)).toBeNull()
   })
 
-  it('должна вычислять глубину узла', () => {
+  it('должен вычислить глубину узла', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
 

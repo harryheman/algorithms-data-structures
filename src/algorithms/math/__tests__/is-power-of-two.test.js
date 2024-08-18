@@ -1,7 +1,7 @@
 import isPowerOfTwo from '../is-power-of-two'
 
 describe('isPowerOfTwo', () => {
-  it('должна проверять, является ли число результатом возведения в степень 2', () => {
+  it('должен проверить, является ли переданное число результатом возведения числа 2 в какую-либо степень', () => {
     expect(isPowerOfTwo(-1)).toBe(false)
     expect(isPowerOfTwo(0)).toBe(false)
     expect(isPowerOfTwo(1)).toBe(true)

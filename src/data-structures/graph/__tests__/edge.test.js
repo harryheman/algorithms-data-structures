@@ -2,7 +2,7 @@ import Edge from '../edge'
 import Node from '../node'
 
 describe('Edge', () => {
-  it('должна создать ребро графа с дефолтным весом', () => {
+  it('должена создать ребро графа с дефолтным весом', () => {
     const from = new Node('A')
     const to = new Node('B')
     const edge = new Edge(from, to)
@@ -14,7 +14,7 @@ describe('Edge', () => {
     expect(edge.weight).toEqual(0)
   })
 
-  it('должна создать граф с указанным весом', () => {
+  it('должена создать граф с указанным весом', () => {
     const from = new Node('A')
     const to = new Node('B')
     const edge = new Edge(from, to, 10)
@@ -24,7 +24,7 @@ describe('Edge', () => {
     expect(edge.weight).toEqual(10)
   })
 
-  it('должна быть возможность инвертировать ребро', () => {
+  it('должен инвертировать ребро', () => {
     const nodeA = new Node('A')
     const nodeB = new Node('B')
     const edge = new Edge(nodeA, nodeB, 10)
