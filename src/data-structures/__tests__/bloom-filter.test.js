@@ -13,13 +13,13 @@ describe('BloomFilter', () => {
     expect(typeof bloomFilter.mayContain).toBe('function')
   })
 
-  it('должен создавать хранилище с указанными методами', () => {
+  it('должен создать хранилище с указанными методами', () => {
     const store = bloomFilter.createStore(18)
     expect(typeof store.getValue).toBe('function')
     expect(typeof store.setValue).toBe('function')
   })
 
-  it('должен стабильно хешировать элементы с помощью 3 хеш-функций', () => {
+  it('должен стабильно хешировать элементы с помощью трех хеш-функций', () => {
     const str1 = 'apple'
 
     expect(bloomFilter.hash1(str1)).toEqual(bloomFilter.hash1(str1))
@@ -41,7 +41,7 @@ describe('BloomFilter', () => {
     expect(bloomFilter.hash3(str2)).toBe(10)
   })
 
-  it('должен создать массив с 3 хешированными значениями', () => {
+  it('должен создать массив с тремя хешированными значениями', () => {
     expect(bloomFilter.getHashValues('abc').length).toBe(3)
     expect(bloomFilter.getHashValues('abc')).toEqual([66, 63, 54])
   })

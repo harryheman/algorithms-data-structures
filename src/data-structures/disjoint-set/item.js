@@ -1,11 +1,16 @@
 export default class Item {
   constructor(value, keyCb) {
+    // Значение
     this.value = value
+    // Кастомная функция извлечения ключа
     this.keyCb = keyCb
+    // Родительский узел
     this.parent = null
+    // Дочерние узлы
     this.children = {}
   }
 
+  // Возвращает ключ (значение)
   getKey() {
     if (this.keyCb) {
       return this.keyCb(this.value)
@@ -13,14 +18,17 @@ export default class Item {
     return this.value
   }
 
+  // Возвращает корневой узел
   getRoot() {
     return this.isRoot() ? this : this.parent.getRoot()
   }
 
+  // Определяет, является ли узел корневым
   isRoot() {
     return this.parent === null
   }
 
+  // Возвращает ранг (вес) узла
   getRank() {
     const children = this.getChildren()
 
@@ -36,10 +44,12 @@ export default class Item {
     return rank
   }
 
+  // Возвращает потомков
   getChildren() {
     return Object.values(this.children)
   }
 
+  // Устанавливает предка
   setParent(parent, forceSettingParentChild = true) {
     this.parent = parent
 
@@ -50,6 +60,7 @@ export default class Item {
     return this
   }
 
+  // Добавляет потомка
   addChild(child) {
     this.children[child.getKey()] = child
     child.setParent(this, false)

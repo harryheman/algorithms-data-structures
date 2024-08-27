@@ -1,7 +1,7 @@
 import LRUCache from '../lru-cache'
 
 describe('LRUCache', () => {
-  it('должен устанавливать и извлекать значения в и из кэша', () => {
+  it('должен добавить/извлечь значения в/из кэша', () => {
     const cache = new LRUCache(100)
     expect(cache.get('key-1')).toBeNull()
 
@@ -23,7 +23,7 @@ describe('LRUCache', () => {
     expect(cache.get('key-3')).toBe(7)
   })
 
-  it('должен удалять самые редко используемые элементы из кэша размером 1', () => {
+  it('должен вытеснить элементы из кэша размером 1', () => {
     const cache = new LRUCache(1)
     expect(cache.get('key-1')).toBeNull()
 
@@ -44,7 +44,7 @@ describe('LRUCache', () => {
     expect(cache.get('key-4')).toBe(19)
   })
 
-  it('должен удалять самые редко используемые элементы из кэша размером 2', () => {
+  it('должен вытеснить элементы из кэша размером 2', () => {
     const cache = new LRUCache(2)
     expect(cache.get('key-21')).toBeNull()
 
@@ -72,7 +72,7 @@ describe('LRUCache', () => {
     expect(cache.get('key-24')).toBe(19)
   })
 
-  it('должен удалять самые редко используемые элементы из кэша размером 3', () => {
+  it('должен вытеснить элемент из кэша размером 3', () => {
     const cache = new LRUCache(3)
 
     cache.set('key-1', 1)
@@ -94,7 +94,7 @@ describe('LRUCache', () => {
     expect(cache.get('key-4')).toBe(5)
   })
 
-  it('должен перемещать узел при вызове метода `set`', () => {
+  it('должен обновить узел при вызове метода `set`', () => {
     const cache = new LRUCache(2)
 
     cache.set('2', 1)
@@ -105,7 +105,7 @@ describe('LRUCache', () => {
     expect(cache.get('2')).toBe(3)
   })
 
-  it('должен перемещать используемый элемент в кэше размером 3', () => {
+  it('должен обновить элементы в кэше размером 3', () => {
     const cache = new LRUCache(3)
 
     cache.set('key-1', 1)
@@ -120,7 +120,7 @@ describe('LRUCache', () => {
     expect(cache.get('key-2')).toBeNull()
   })
 
-  it('должен перемещать используемый элемент в кэше размером 4', () => {
+  it('должен обновить элементы в кэше размером 4', () => {
     const cache = new LRUCache(4)
 
     cache.set('key-1', 1)

@@ -1,7 +1,7 @@
 import Item from '../item'
 
 describe('Item', () => {
-  it('должна выполнять базовые манипуляции с элементом непересекающегося множества', () => {
+  it('должен выполнить базовые манипуляции с выделенным элементом', () => {
     const itemA = new Item('A')
     const itemB = new Item('B')
     const itemC = new Item('C')
@@ -55,7 +55,7 @@ describe('Item', () => {
     expect(itemC.getRank()).toEqual(1)
   })
 
-  it('должна выполнять базовые манипуляции с элементом непересекающегося множества с кастомной функцией извлечения ключа', () => {
+  it('должен выполнить базовые манипуляции с выделенным элементом с кастомной функцией извлечения ключа', () => {
     const keyExtractor = (value) => value.key
 
     const itemA = new Item({ key: 'A', value: 1 }, keyExtractor)

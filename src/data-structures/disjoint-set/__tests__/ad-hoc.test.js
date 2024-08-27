@@ -1,7 +1,7 @@
 import DisjointSetAdhoc from '../ad-hoc'
 
 describe('DisjointSetAdhoc', () => {
-  it('должна создать множества и найти соединенные элементы', () => {
+  it('должен создать множества и найти соединенные элементы', () => {
     const set = new DisjointSetAdhoc(10)
 
     // 1-2-5-6-7 3-8-9 4
@@ -31,7 +31,7 @@ describe('DisjointSetAdhoc', () => {
     expect(set.connected(2, 3)).toBe(false)
   })
 
-  it('должна сохранять высоту дерева маленькой', () => {
+  it('должен сохранять высоту дерева маленькой', () => {
     const set = new DisjointSetAdhoc(10)
 
     // 1-2-6-7-9 1 3 4 5
