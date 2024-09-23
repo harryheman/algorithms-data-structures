@@ -1,7 +1,7 @@
 import sieveOfEratosthenes from '../sieve-of-eratosthenes'
 
 describe('sieveOfEratosthenes', () => {
-  it('должна вычислять все простые числа, меньшие или равные `n`', () => {
+  it('должен вычислить все простые числа, меньшие или равные n', () => {
     expect(sieveOfEratosthenes(5)).toEqual([2, 3, 5])
     expect(sieveOfEratosthenes(10)).toEqual([2, 3, 5, 7])
     expect(sieveOfEratosthenes(100)).toEqual([

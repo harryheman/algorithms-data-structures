@@ -1,7 +1,7 @@
 import bruteForce from '../brute-force'
 
 describe('bruteForce', () => {
-  it('должен находить максимальные подмассивы методом грубой силы', () => {
+  it('должен найти максимальные подмассивы методом грубой силы', () => {
     expect(bruteForce([])).toEqual([])
     expect(bruteForce([0, 0])).toEqual([0])
     expect(bruteForce([0, 0, 1])).toEqual([0, 0, 1])

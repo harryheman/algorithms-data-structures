@@ -1,19 +1,18 @@
 import fisherYates from '../fisher-yates'
-import { sortedArr } from '../../sorting/sort-tester'
-import QuickSort from '../../sorting/quick-sort'
+
+const sortedArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 describe('fisherYates', () => {
-  it('should shuffle small arrays', () => {
+  it('должен тасовать маленькие массивы', () => {
     expect(fisherYates([])).toEqual([])
     expect(fisherYates([1])).toEqual([1])
   })
 
-  it('should shuffle array randomly', () => {
+  it('должен произвольно перетасовать элементы массива', () => {
     const shuffledArray = fisherYates(sortedArr)
-    const sorter = new QuickSort()
 
     expect(shuffledArray.length).toBe(sortedArr.length)
     expect(shuffledArray).not.toEqual(sortedArr)
-    expect(sorter.sort(shuffledArray)).toEqual(sortedArr)
+    expect(shuffledArray.sort()).toEqual(sortedArr)
   })
 })

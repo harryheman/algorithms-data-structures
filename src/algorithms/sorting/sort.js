@@ -17,6 +17,6 @@ export default class Sort {
   }
 
   sort() {
-    throw new Error('Метод сортировки не реализован!')
+    throw new Error('Метод сортировки не реализован')
   }
 }

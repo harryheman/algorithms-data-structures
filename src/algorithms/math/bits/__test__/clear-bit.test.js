@@ -1,7 +1,7 @@
 import clearBit from '../clear-bit'
 
 describe('clearBit', () => {
-  it('должна очищать бит на указанной позиции', () => {
+  it('должен очистить биты на указанных позициях', () => {
     // 1 = 0b0001
     expect(clearBit(1, 0)).toBe(0)
     expect(clearBit(1, 1)).toBe(1)

@@ -20,15 +20,15 @@ const precisionConfigs = {
 }
 
 /**
- * Преобразует бинарное представление числа с плавающей точкой в его десятичное представление
+ * Преобразует двоичное представление числа с плавающей запятой в его десятичное представление
  */
 function bitsToFloat(bits, precisionConfig) {
   const { signBitsCount, exponentBitsCount } = precisionConfig
 
-  // определяем знак
+  // Определяем знак
   const sign = (-1) ** bits[0] // -1^1 = -1, -1^0 = 1
 
-  // вычисляем значение экспоненты
+  // Вычисляем значение экспоненты
   const exponentBias = 2 ** (exponentBitsCount - 1) - 1
   const exponentBits = bits.slice(
     signBitsCount,
@@ -43,7 +43,7 @@ function bitsToFloat(bits, precisionConfig) {
   )
   const exponent = exponentUnbiased - exponentBias
 
-  // вычисляем значение дробной части
+  // Вычисляем значение дробной части
   const fractionBits = bits.slice(signBitsCount + exponentBitsCount)
   const fraction = fractionBits.reduce(
     (fractionSoFar, currentBit, bitIndex) => {
@@ -53,7 +53,7 @@ function bitsToFloat(bits, precisionConfig) {
     0,
   )
 
-  // вычисляем число
+  // Вычисляем число
   return sign * 2 ** exponent * (1 + fraction)
 }
 

@@ -1,7 +1,7 @@
 import leastCommonMultiple from '../least-common-multiple'
 
 describe('leastCommonMultiple', () => {
-  it('должна вычислять НОМ', () => {
+  it('должен вычислить НОМ', () => {
     expect(leastCommonMultiple(0, 0)).toBe(0)
     expect(leastCommonMultiple(1, 0)).toBe(0)
     expect(leastCommonMultiple(0, 1)).toBe(0)

@@ -2,7 +2,7 @@ import combineWithoutRepetitions from '../without-repetitions'
 import factorial from '../../../math/factorial'
 
 describe('combineWithoutRepetitions', () => {
-  it('должен комбинировать строку без повторов', () => {
+  it('должен комбинировать элементы множеств без повторов', () => {
     expect(combineWithoutRepetitions(['A', 'B'], 3)).toEqual([])
 
     expect(combineWithoutRepetitions(['A', 'B'], 1)).toEqual([['A'], ['B']])

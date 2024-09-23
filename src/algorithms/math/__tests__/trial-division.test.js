@@ -1,7 +1,7 @@
 import trialDivision from '../trial-division'
 
 describe('trialDivision', () => {
-  it('должна определять простые числа', () => {
+  it('должен определить простые числа', () => {
     expect(trialDivision(1)).toBe(false)
     expect(trialDivision(2)).toBe(true)
     expect(trialDivision(3)).toBe(true)

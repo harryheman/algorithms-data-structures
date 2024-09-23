@@ -1,7 +1,7 @@
 import dynamicProgramming from '../dynamic-programming'
 
 describe('dynamicProgramming', () => {
-  it('должен находить максимальные подмассивы методом динамического программирования', () => {
+  it('должен найти максимальные подмассивы методом динамического программирования', () => {
     expect(dynamicProgramming([])).toEqual([])
     expect(dynamicProgramming([0, 0])).toEqual([0])
     expect(dynamicProgramming([0, 0, 1])).toEqual([0, 0, 1])

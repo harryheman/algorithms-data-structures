@@ -2,7 +2,7 @@ import withoutRepetitions from '../without-repetitions'
 import factorial from '../../../math/factorial'
 
 describe('withoutRepetitions', () => {
-  it('should permutate string', () => {
+  it('должен переставлять элементы множеств без повторений', () => {
     const permutations1 = withoutRepetitions(['A'])
     expect(permutations1).toEqual([['A']])
 

@@ -1,7 +1,7 @@
-import lcs from '..'
+import lcs from '../matrix'
 
 describe('lcs', () => {
-  it('должен найти самую длинную общую последовательность двух множеств', () => {
+  it('должен найти НОП двух множеств', () => {
     expect(lcs([''], [''])).toEqual([''])
 
     expect(lcs([''], ['A', 'B', 'C'])).toEqual([''])

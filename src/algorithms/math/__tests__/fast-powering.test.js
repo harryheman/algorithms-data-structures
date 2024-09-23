@@ -1,7 +1,7 @@
 import fastPowering from '../fast-powering'
 
 describe('fastPowering', () => {
-  it('должен вычислять степень за время log(n)', () => {
+  it('должен вычислить степень за время log(n)', () => {
     expect(fastPowering(1, 1)).toBe(1)
     expect(fastPowering(2, 0)).toBe(1)
     expect(fastPowering(2, 2)).toBe(4)

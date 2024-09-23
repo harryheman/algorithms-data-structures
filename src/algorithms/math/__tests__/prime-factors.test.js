@@ -8,7 +8,7 @@ function approximationError(exactCount, approximateCount) {
 }
 
 describe('primeFactors', () => {
-  it('должна вычислять количество простых множителей', () => {
+  it('должен вычислить количество простых множителей', () => {
     expect(primeFactors(1)).toEqual([])
     expect(primeFactors(2)).toEqual([2])
     expect(primeFactors(3)).toEqual([3])
@@ -30,7 +30,7 @@ describe('primeFactors', () => {
     expect(primeFactors(873452453)).toEqual([149, 1637, 3581])
   })
 
-  it('должна вычислять количество простых множителей с помощью теоремы Харди-Рамануджана', () => {
+  it('должен вычислить количество простых множителей с помощью теоремы Харди-Рамануджана', () => {
     expect(hardyRamanujan(2)).toBeCloseTo(-0.366, 2)
     expect(hardyRamanujan(4)).toBeCloseTo(0.326, 2)
     expect(hardyRamanujan(40)).toBeCloseTo(1.305, 2)
@@ -44,7 +44,7 @@ describe('primeFactors', () => {
     expect(hardyRamanujan(873452453)).toBeCloseTo(3.024, 2)
   })
 
-  it('должна правильно вычислять разницу между точным и приблизительным количеством простых множителей', () => {
+  it('должен правильно вычислить разницу между точным и приблизительным количеством простых множителей', () => {
     expect(
       approximationError(primeFactors(2).length, hardyRamanujan(2)),
     ).toBeCloseTo(136.651, 2)

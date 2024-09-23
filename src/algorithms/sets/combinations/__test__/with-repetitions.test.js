@@ -2,7 +2,7 @@ import withRepetitions from '../with-repetitions'
 import factorial from '../../../math/factorial'
 
 describe('withRepetitions', () => {
-  it('должен комбинировать строку с повторами', () => {
+  it('должен комбинировать элементы множеств с повторами', () => {
     expect(withRepetitions(['A'], 1)).toEqual([['A']])
 
     expect(withRepetitions(['A', 'B'], 1)).toEqual([['A'], ['B']])

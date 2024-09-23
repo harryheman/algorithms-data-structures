@@ -1,7 +1,7 @@
 import euclideanAlgorithmIterative from '../euclidean-algorithm-iterative'
 
 describe('euclideanAlgorithmIterative', () => {
-  it('должна итеративно вычислять НОД', () => {
+  it('должен итеративно вычислить НОД', () => {
     expect(euclideanAlgorithmIterative(0, 0)).toBe(0)
     expect(euclideanAlgorithmIterative(2, 0)).toBe(2)
     expect(euclideanAlgorithmIterative(0, 2)).toBe(2)

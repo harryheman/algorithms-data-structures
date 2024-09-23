@@ -1,7 +1,7 @@
 import euclideanAlgorithm from '../euclidean-algorithm'
 
 describe('euclideanAlgorithm', () => {
-  it('должна рекурсивно вычислять НОД', () => {
+  it('должен рекурсивно вычислить НОД', () => {
     expect(euclideanAlgorithm(0, 0)).toBe(0)
     expect(euclideanAlgorithm(2, 0)).toBe(2)
     expect(euclideanAlgorithm(0, 2)).toBe(2)

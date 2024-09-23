@@ -1,6 +1,3 @@
-/**
- * Возвращает множество всех подмножеств с помощью рекурсивного подхода
- */
 export default function backtracking(
   set,
   allSubsets = [[]],
@@ -14,10 +11,10 @@ export default function backtracking(
     currentSubset.push(set[i])
 
     // Текущее подмножество является валидным, запоминаем его.
-    // Деструктуризация позволяет сохранить копию `currentSubset`.
-    // Нам нужна копия, поскольку `currentSubset` будет изменен
+    // `structuredClone()` создает копию `currentSubset`.
+    // Это необходимо, поскольку `currentSubset` будет модифицирован
     // в дальнейших рекурсивных вызовах
-    allSubsets.push([...currentSubset])
+    allSubsets.push(structuredClone(currentSubset))
 
     // Генерируем другие подмножества для текущего подмножества.
     // В качестве значения `start` передаем `i + 1` во избежание дублирования

@@ -1,7 +1,7 @@
 import fibonacci from '../fibonacci'
 
 describe('fibonacci', () => {
-  it('должна вычислять числа Фибоначчи', () => {
+  it('должен вычислить числа Фибоначчи', () => {
     expect(fibonacci(1)).toEqual([1])
     expect(fibonacci(2)).toEqual([1, 1])
     expect(fibonacci(3)).toEqual([1, 1, 2])

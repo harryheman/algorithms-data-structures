@@ -1,7 +1,7 @@
 import isPositive from '../is-positive'
 
 describe('isPositive', () => {
-  it('должна определять, является ли число положительным', () => {
+  it('должен определять, являются ли числа положительными', () => {
     expect(isPositive(1)).toBe(true)
     expect(isPositive(2)).toBe(true)
     expect(isPositive(3)).toBe(true)

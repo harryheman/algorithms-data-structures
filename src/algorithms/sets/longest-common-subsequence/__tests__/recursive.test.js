@@ -1,7 +1,7 @@
 import lcsRecursive from '../recursive'
 
 describe('lcsRecursive', () => {
-  it('должен рекурсивно найти самую длинную общую последовательность двух множеств', () => {
+  it('должен рекурсивно найти НОП двух строк', () => {
     expect(lcsRecursive('', '')).toBe('')
     expect(lcsRecursive('ABC', '')).toBe('')
     expect(lcsRecursive('', 'ABC')).toBe('')

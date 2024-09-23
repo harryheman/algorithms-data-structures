@@ -1,7 +1,7 @@
 import bitLength from '../bit-length'
 
 describe('bitLength', () => {
-  it('должна вычислять количество битов,из которых состоит число', () => {
+  it('должен вычислить количество битов, из которых состоят числа', () => {
     expect(bitLength(0b0)).toBe(0)
     expect(bitLength(0b1)).toBe(1)
     expect(bitLength(0b01)).toBe(1)

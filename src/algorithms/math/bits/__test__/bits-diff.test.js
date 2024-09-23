@@ -1,7 +1,7 @@
 import bitsDiff from '../bits-diff'
 
 describe('bitsDiff', () => {
-  it('должна вычислять разницу между двумя числами в битах', () => {
+  it('должен вычислить разницу между двумя числами в битах', () => {
     expect(bitsDiff(0, 0)).toBe(0)
     expect(bitsDiff(1, 1)).toBe(0)
     expect(bitsDiff(124, 124)).toBe(0)

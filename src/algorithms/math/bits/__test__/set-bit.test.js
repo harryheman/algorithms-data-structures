@@ -1,7 +1,7 @@
 import setBit from '../set-bit'
 
 describe('setBit', () => {
-  it('должна устанавливать бит на указанную позицию', () => {
+  it('должен установить биты на указанные позиции', () => {
     // 1 = 0b0001
     expect(setBit(1, 0)).toBe(1)
     expect(setBit(1, 1)).toBe(3)

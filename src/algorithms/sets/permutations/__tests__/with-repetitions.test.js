@@ -1,7 +1,7 @@
 import withRepetitions from '../with-repetitions'
 
 describe('withRepetitions', () => {
-  it('should permutate string with repetition', () => {
+  it('должен переставлять элементы множеств с повторениями', () => {
     const permutations1 = withRepetitions(['A'])
     expect(permutations1).toEqual([['A']])
 

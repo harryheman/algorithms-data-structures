@@ -1,7 +1,7 @@
 import factorialRecursive from '../factorial-recursive'
 
 describe('factorialRecursive', () => {
-  it('должна рекурсивно вычислять факториал числа', () => {
+  it('должен рекурсивно вычислить факториалы чисел', () => {
     expect(factorialRecursive(0)).toBe(1)
     expect(factorialRecursive(1)).toBe(1)
     expect(factorialRecursive(5)).toBe(120)

@@ -1,7 +1,7 @@
 import updateBit from '../update-bit'
 
 describe('updateBit', () => {
-  it('должна обновлять бит на указанной позиции', () => {
+  it('должен обновить биты на указанных позициях', () => {
     // 1 = 0b0001
     expect(updateBit(1, 0, 1)).toBe(1)
     expect(updateBit(1, 0, 0)).toBe(0)

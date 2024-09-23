@@ -1,7 +1,7 @@
 import cartesianProduct from '../cartesian-product'
 
 describe('cartesianProduct', () => {
-  it('должен возвращать `null`, если отсутствует одно из множеств', () => {
+  it('должен вернуть `null` при отсутствии одного из множеств', () => {
     const product1 = cartesianProduct([1], null)
     const product2 = cartesianProduct([], null)
 
@@ -9,7 +9,7 @@ describe('cartesianProduct', () => {
     expect(product2).toBeNull()
   })
 
-  it('должен вычислять произведение 2 множеств', () => {
+  it('должен вычислить произведение двух множеств', () => {
     const product1 = cartesianProduct([1], [1])
     const product2 = cartesianProduct([1, 2], [3, 5])
 

@@ -1,7 +1,7 @@
 import euclideanDistance from '../euclidean-distance'
 
 describe('euclideanDistance', () => {
-  it('должен вычислять евклидово расстояние между векторами', () => {
+  it('должен вычислить евклидово расстояние между векторами', () => {
     expect(euclideanDistance([[1]], [[2]])).toEqual(1)
     expect(euclideanDistance([[2]], [[1]])).toEqual(1)
     expect(euclideanDistance([[5, 8]], [[7, 3]])).toEqual(5.39)

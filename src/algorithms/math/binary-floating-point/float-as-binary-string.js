@@ -9,7 +9,7 @@ const byteOffset = 0
 const littleEndian = false
 
 /**
- * Преобразует число с плавающей точкой в бинарное представление согласно IEEE 754
+ * Преобразует число с плавающей запятой в двоичное представление согласно IEEE 754
  */
 function floatAsBinaryString(floatNumber, byteLength) {
   let numberAsBinaryString = ''

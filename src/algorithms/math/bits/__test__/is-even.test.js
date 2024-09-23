@@ -1,7 +1,7 @@
 import isEven from '../is-even'
 
 describe('isEven', () => {
-  it('должна определять, является ли число четным', () => {
+  it('должен определить, являются ли числа четными', () => {
     expect(isEven(0)).toBe(true)
     expect(isEven(2)).toBe(true)
     expect(isEven(-2)).toBe(true)

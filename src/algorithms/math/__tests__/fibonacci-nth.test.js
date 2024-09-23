@@ -1,7 +1,7 @@
 import fibonacciNth from '../fibonacci-nth'
 
 describe('fibonacciNth', () => {
-  it('должна вычислять указанное число Фибоначчи', () => {
+  it('должен вычислить n-ые числа Фибоначчи', () => {
     expect(fibonacciNth(1)).toBe(1)
     expect(fibonacciNth(2)).toBe(1)
     expect(fibonacciNth(3)).toBe(2)

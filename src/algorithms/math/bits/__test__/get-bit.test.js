@@ -1,7 +1,7 @@
 import getBit from '../get-bit'
 
 describe('getBit', () => {
-  it('должна извлекать бит на указанной позиции', () => {
+  it('должен извлечь биты на указанных позициях', () => {
     // 1 = 0b0001
     expect(getBit(1, 0)).toBe(1)
     expect(getBit(1, 1)).toBe(0)

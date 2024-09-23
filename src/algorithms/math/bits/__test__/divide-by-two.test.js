@@ -1,7 +1,7 @@
 import divideByTwo from '../divide-by-two'
 
 describe('divideByTwo', () => {
-  it('должна делить число на 2 с помощью бинарных операций', () => {
+  it('должен разделить числа на 2 с помощью бинарных операций', () => {
     expect(divideByTwo(0)).toBe(0)
     expect(divideByTwo(1)).toBe(0)
     expect(divideByTwo(3)).toBe(1)

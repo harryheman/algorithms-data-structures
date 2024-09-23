@@ -174,7 +174,7 @@ export const updateCellAtIndex = (m, indices, value) => {
 }
 
 /**
- * Складываем 2 матрицы поэлементно
+ * Складывает 2 матрицы поэлементно
  */
 export const add = (a, b) => {
   validateSameShape(a, b)

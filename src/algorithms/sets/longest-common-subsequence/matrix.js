@@ -4,12 +4,12 @@ export default function lcs(a, b) {
     .fill(null)
     .map(() => new Array(a.length + 1).fill(null))
 
-  // Заполняем 0 первую строку
+  // Заполняем `0` первую строку
   for (let i = 0; i <= a.length; i++) {
     matrix[0][i] = 0
   }
 
-  // Заполняем 0 первую колонку
+  // Заполняем `0` первую колонку
   for (let i = 0; i <= b.length; i++) {
     matrix[i][0] = 0
   }

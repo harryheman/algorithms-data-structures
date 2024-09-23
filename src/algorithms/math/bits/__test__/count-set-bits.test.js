@@ -1,7 +1,7 @@
 import countSetBits from '../count-set-bits'
 
 describe('countSetBits', () => {
-  it('должна возвращать количество установленных битов', () => {
+  it('должен вернуть количество установленных битов', () => {
     expect(countSetBits(0)).toBe(0)
     expect(countSetBits(1)).toBe(1)
     expect(countSetBits(2)).toBe(1)

@@ -1,7 +1,7 @@
 import divideConquer from '../divide-conquer'
 
 describe('dcMaximumSubarraySum', () => {
-  it('должен находить максимальные подмассивы методом "разделяй и властвуй"', () => {
+  it("должен найти максимальные подмассивы методом 'Разделяй и властвуй'", () => {
     expect(divideConquer([])).toEqual(-Infinity)
     expect(divideConquer([0, 0])).toEqual(0)
     expect(divideConquer([0, 0, 1])).toEqual(1)
