@@ -1,7 +1,7 @@
 import jumpSearch from '../jump-search'
 
 describe('jumpSearch', () => {
-  it('должен находить число в отсортированном массиве', () => {
+  it('должен найти числа в отсортированных массивах', () => {
     expect(jumpSearch([], 1)).toBe(-1)
     expect(jumpSearch([1], 2)).toBe(-1)
     expect(jumpSearch([1], 1)).toBe(0)
@@ -18,7 +18,7 @@ describe('jumpSearch', () => {
     expect(jumpSearch([1, 2, 5, 10, 20, 21, 24, 30, 48], 48)).toBe(8)
   })
 
-  it('должен находить объект в отсортированном массиве', () => {
+  it('должен найти объекты в отсортированном массиве', () => {
     const sortedArrayOfObjects = [
       { key: 1, value: 'value1' },
       { key: 2, value: 'value2' },

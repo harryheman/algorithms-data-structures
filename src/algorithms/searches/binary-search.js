@@ -1,7 +1,7 @@
 import Comparator from '../../utils/comparator'
 
-export default function binarySearch(sortedArr, target, comparatorFn) {
-  const comparator = new Comparator(comparatorFn)
+export default function binarySearch(sortedArr, target, fn) {
+  const comparator = new Comparator(fn)
 
   let start = 0
   let end = sortedArr.length - 1
@@ -14,11 +14,12 @@ export default function binarySearch(sortedArr, target, comparatorFn) {
       return middle
     }
 
+    // Если целевое значение меньше центрального элемента
     if (comparator.lessThan(sortedArr[middle], target)) {
       // Переходим к правой половине массива
       start = middle + 1
     } else {
-      // ПереNavig к левой половине массива
+      // Переходим к левой половине массива
       end = middle - 1
     }
   }

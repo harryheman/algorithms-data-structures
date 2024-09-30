@@ -1,7 +1,7 @@
 import Comparator from '../../utils/comparator'
 
-export default function linearSearch(arr, target, comparatorFn) {
-  const comparator = new Comparator(comparatorFn)
+export default function linearSearch(arr, target, fn) {
+  const comparator = new Comparator(fn)
   const result = []
 
   arr.forEach((item, index) => {

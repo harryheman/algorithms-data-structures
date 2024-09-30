@@ -1,7 +1,7 @@
 import binarySearch from '../binary-search'
 
 describe('binarySearch', () => {
-  it('должен находить число в отсортированном массиве', () => {
+  it('должен найти числа в отсортированных массивах', () => {
     expect(binarySearch([], 1)).toBe(-1)
     expect(binarySearch([1], 1)).toBe(0)
     expect(binarySearch([1, 2], 1)).toBe(0)
@@ -13,7 +13,7 @@ describe('binarySearch', () => {
     expect(binarySearch([1, 5, 10, 12, 14, 17, 22, 100], 0)).toBe(-1)
   })
 
-  it('должен находить объект в отсортированном массиве', () => {
+  it('должен найти объекты в отсортированном массиве', () => {
     const sortedArrayOfObjects = [
       { key: 1, value: 'value1' },
       { key: 2, value: 'value2' },

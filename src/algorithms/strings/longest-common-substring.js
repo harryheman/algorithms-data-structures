@@ -6,7 +6,7 @@ export default function longestCommonSubstring(str1, str2) {
     .fill(null)
     .map(() => new Array(s1.length + 1).fill(null))
 
-  // Заполняем первую строку и первую колонку нулями
+  // Заполняем первую строку и первую колонку `0`
   for (let columnIndex = 0; columnIndex <= s1.length; columnIndex++) {
     matrix[0][columnIndex] = 0
   }
@@ -42,6 +42,7 @@ export default function longestCommonSubstring(str1, str2) {
   }
 
   // Извлекаем самую длинную подстроку из матрицы
+  // путем конкатенации символов
   let longestSubstring = ''
 
   while (matrix[longestSubstringRow][longestSubstringColumn] > 0) {

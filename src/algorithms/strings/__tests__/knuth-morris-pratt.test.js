@@ -1,7 +1,7 @@
 import knuthMorrisPratt from '../knuth-morris-pratt'
 
 describe('knuthMorrisPratt', () => {
-  it('должен находить начальный индекс слова в тексте', () => {
+  it('должен найти начальные индексы слов в текстах', () => {
     expect(knuthMorrisPratt('', '')).toBe(0)
     expect(knuthMorrisPratt('a', '')).toBe(0)
     expect(knuthMorrisPratt('a', 'a')).toBe(0)

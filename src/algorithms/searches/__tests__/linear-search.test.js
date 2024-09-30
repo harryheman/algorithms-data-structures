@@ -1,7 +1,7 @@
 import linearSearch from '../linear-search'
 
 describe('linearSearch', () => {
-  it('должен находить число в массиве', () => {
+  it('должен найти числа в массиве', () => {
     const array = [1, 2, 4, 6, 2]
 
     expect(linearSearch(array, 10)).toEqual([])
@@ -9,7 +9,7 @@ describe('linearSearch', () => {
     expect(linearSearch(array, 2)).toEqual([1, 4])
   })
 
-  it('должен находить строку в массиве', () => {
+  it('должен найти символы в массиве', () => {
     const array = ['a', 'b', 'a']
 
     expect(linearSearch(array, 'c')).toEqual([])
@@ -17,7 +17,7 @@ describe('linearSearch', () => {
     expect(linearSearch(array, 'a')).toEqual([0, 2])
   })
 
-  it('должен находить объект в массиве', () => {
+  it('должен найти объекты в массиве', () => {
     const comparatorCallback = (a, b) => {
       if (a.key === b.key) {
         return 0

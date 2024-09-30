@@ -1,7 +1,7 @@
 import Comparator from '../../utils/comparator'
 
-export default function jumpSearch(sortedArr, target, comparatorFn) {
-  const comparator = new Comparator(comparatorFn)
+export default function jumpSearch(sortedArr, target, fn) {
+  const comparator = new Comparator(fn)
   const length = sortedArr.length
   if (!length) return -1
 
@@ -23,7 +23,7 @@ export default function jumpSearch(sortedArr, target, comparatorFn) {
   }
 
   // Выполняем линейный поиск в блоке, к которому принадлежит
-  // искомый элемент, начиная со `start`
+  // `target`, начиная со `start`
   let currentIndex = start
   while (currentIndex < Math.min(end, length)) {
     if (comparator.equal(target, sortedArr[currentIndex])) {

@@ -3,7 +3,7 @@ import PolynomialHash from '../cryptography/polynomial-hash'
 export default function rabinKarp(text, word) {
   const hasher = new PolynomialHash()
 
-  // Вычисляем хеш слова, который будет использоваться для сравнения с хешами других подстрок
+  // Вычисляем хэш слова, который будет использоваться для сравнения с хэшами подстрок
   const wordHash = hasher.hash(word)
 
   let prevFrame = null
@@ -13,7 +13,7 @@ export default function rabinKarp(text, word) {
   for (let i = 0; i < text.length - word.length + 1; i++) {
     const currentFrame = text.slice(i, i + word.length)
 
-    // Вычисляем хеш текущей подстроки
+    // Вычисляем хэш текущей подстроки
     if (!currentFrameHash) {
       currentFrameHash = hasher.hash(currentFrame)
     } else {
@@ -22,8 +22,8 @@ export default function rabinKarp(text, word) {
 
     prevFrame = currentFrame
 
-    // Сравниваем хеш текущей подстроки с искомой строкой.
-    // При совпадении хешей, проверяем равенство подстрок на случай коллизии хешей
+    // Сравниваем хэш текущей подстроки с искомым паттерном.
+    // При совпадении хэшей, проверяем равенство подстрок на случай коллизии хэшей
     if (
       wordHash === currentFrameHash &&
       text.slice(i, i + word.length) === word

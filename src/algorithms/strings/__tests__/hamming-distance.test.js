@@ -9,7 +9,7 @@ describe('hammingDistance', () => {
     expect(compareStringsOfDifferentLength).toThrowError()
   })
 
-  it('должен вычислять разницу между 2 строками', () => {
+  it('должен вычислить расстояния Хэмминга между двумя строками', () => {
     expect(hammingDistance('a', 'a')).toBe(0)
     expect(hammingDistance('a', 'b')).toBe(1)
     expect(hammingDistance('abc', 'add')).toBe(2)

@@ -1,7 +1,7 @@
 import rabinKarp from '../rabin-karp'
 
 describe('rabinKarp', () => {
-  it('должен находить подстроку в строке', () => {
+  it('должен найти подстроки в строке', () => {
     expect(rabinKarp('', '')).toBe(0)
     expect(rabinKarp('a', '')).toBe(0)
     expect(rabinKarp('a', 'a')).toBe(0)

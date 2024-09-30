@@ -3,8 +3,8 @@ const DEFAULT_MODULUS = 101
 
 export default class PolynomialHash {
   /**
-   * @param {number} [base] - Base number that is used to create the polynomial.
-   * @param {number} [modulus] - Modulus number that keeps the hash from overflowing.
+   * @param {number} [base] - Базовое число, которое используется для создания полинома.
+   * @param {number} [modulus] - Модульное число, которое защищает хэш от переполнения.
    */
   constructor({ base = DEFAULT_BASE, modulus = DEFAULT_MODULUS } = {}) {
     this.base = base
@@ -12,11 +12,11 @@ export default class PolynomialHash {
   }
 
   /**
-   * Function that creates hash representation of the word.
+   * Функция, создающее хэшированное значение слова.
    *
-   * Time complexity: O(word.length).
+   * Временная сложность: O(word.length).
    *
-   * @param {string} word - String that needs to be hashed.
+   * @param {string} word - Строка для хэширования.
    * @return {number}
    */
   hash(word) {
@@ -33,13 +33,12 @@ export default class PolynomialHash {
   }
 
   /**
-   * Function that creates hash representation of the word
-   * based on previous word (shifted by one character left) hash value.
+   * Функция, генерирующая хэш слова на основе
+   * хэша предыдущего слова (сдвинутого на один символ влево).
    *
-   * Recalculates the hash representation of a word so that it isn't
-   * necessary to traverse the whole word again.
+   * Повторно вычисляет хэш слова, чтобы не анализировать все слово заново.
    *
-   * Time complexity: O(1).
+   * Временная сложность: O(1).
    *
    * @param {number} prevHash
    * @param {string} prevWord
@@ -69,7 +68,7 @@ export default class PolynomialHash {
   }
 
   /**
-   * Converts char to number.
+   * Преобразует символ в число.
    *
    * @param {string} char
    * @return {number}
@@ -77,7 +76,7 @@ export default class PolynomialHash {
   charToNumber(char) {
     let charCode = char.codePointAt(0)
 
-    // Check if character has surrogate pair.
+    // Проверяем, является ли символ суррогатной парой.
     const surrogate = char.codePointAt(1)
     if (surrogate !== undefined) {
       const surrogateShift = 2 ** 16

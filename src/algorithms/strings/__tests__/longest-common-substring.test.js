@@ -1,7 +1,7 @@
 import longestCommonSubstring from '../longest-common-substring'
 
 describe('longestCommonSubstring', () => {
-  it('должен находить самую длинную общую подстроку 2 строк', () => {
+  it('должен найти наибольшие общие подстроки двух строк', () => {
     expect(longestCommonSubstring('', '')).toBe('')
     expect(longestCommonSubstring('ABC', '')).toBe('')
     expect(longestCommonSubstring('', 'ABC')).toBe('')

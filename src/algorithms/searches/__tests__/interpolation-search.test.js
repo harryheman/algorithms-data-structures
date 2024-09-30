@@ -1,7 +1,7 @@
 import interpolationSearch from '../interpolation-search'
 
 describe('interpolationSearch', () => {
-  it('должен находить элементы в отсортированном массиве чисел', () => {
+  it('должен найти числа в отсортированных массивах', () => {
     expect(interpolationSearch([], 1)).toBe(-1)
     expect(interpolationSearch([1], 1)).toBe(0)
     expect(interpolationSearch([1], 0)).toBe(-1)

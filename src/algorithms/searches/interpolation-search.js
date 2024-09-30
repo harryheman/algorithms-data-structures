@@ -7,11 +7,11 @@ export default function interpolationSearch(sortedArr, target) {
     const indexDelta = end - start
     const valueDelta = target - sortedArr[start]
 
-    // Если `valueDelta` равняется 0, значит, искомый элемент
+    // Если `valueDelta` равняется `0`, значит, искомый элемент
     // в массиве отсутствует
     if (valueDelta < 0) return -1
 
-    // Если `rangeDelta` равняется 0, значит, подмассив содержит
+    // Если `rangeDelta` равняется `0`, значит, подмассив содержит
     // одинаковые числа, поэтому искать нечего
     if (!rangeDelta) {
       // Это также позволяет избежать деления на 0 при поиске

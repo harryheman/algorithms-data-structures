@@ -39,7 +39,6 @@ export default function knuthMorrisPratt(text, word) {
     } else if (wordIndex > 0) {
       wordIndex = patternTable[wordIndex - 1]
     } else {
-      // wordIndex = 0
       textIndex += 1
     }
   }
