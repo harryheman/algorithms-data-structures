@@ -1,1 +1,1 @@
-import './scripts/algorithms/machine-learning/nano-neuron'
+import './src/algorithms/machine-learning/nano-neuron'
