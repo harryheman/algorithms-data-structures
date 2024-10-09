@@ -14,6 +14,8 @@ export const negativeArr = [-1, 0, 5, -10, 20, 13, -7, 3, 2, -3]
 export const negativeArrSorted = [-10, -7, -3, -1, 0, 2, 3, 5, 13, 20]
 
 export class SortTester {
+  // Проверяет корректность сортировки
+  // с помощью переданного метода (класса) сортировки
   static testSort(SortingClass) {
     const sorter = new SortingClass()
 
@@ -30,11 +32,14 @@ export class SortTester {
     expect(sorter.sort(equalArr)).toEqual(equalArr)
   }
 
+  // Проверяет корректность сортировки отрицательных чисел
   static testNegativeNumbersSort(SortingClass) {
     const sorter = new SortingClass()
     expect(sorter.sort(negativeArr)).toEqual(negativeArrSorted)
   }
 
+  // Проверяет корректность сортировки
+  // с помощью кастомной функции сравнения элементов
   static testSortWithCustomComparator(SortingClass) {
     const callbacks = {
       compareCallback: (a, b) => {
@@ -59,6 +64,7 @@ export class SortTester {
     expect(sorter.sort(['aa', 'aa'])).toEqual(['aa', 'aa'])
   }
 
+  // Проверяет стабильность сортировки
   static testSortStability(SortingClass) {
     const callbacks = {
       compareCallback: (a, b) => {
@@ -81,6 +87,7 @@ export class SortTester {
     ])
   }
 
+  // Проверяет временную сложность сортировки
   static testAlgorithmTimeComplexity(
     SortingClass,
     arrayToBeSorted,

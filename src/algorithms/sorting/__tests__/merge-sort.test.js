@@ -1,4 +1,4 @@
-import ShellSort from '../shell-sort'
+import MergeSort from '../merge-sort'
 import {
   equalArr,
   notSortedArr,
@@ -7,28 +7,32 @@ import {
   SortTester,
 } from '../sort-tester'
 
-// Константы сложности
-const SORTED_ARRAY_VISITING_COUNT = 320
-const NOT_SORTED_ARRAY_VISITING_COUNT = 320
-const REVERSE_SORTED_ARRAY_VISITING_COUNT = 320
-const EQUAL_ARRAY_VISITING_COUNT = 320
+// Константы временной сложности
+const SORTED_ARRAY_VISITING_COUNT = 79
+const NOT_SORTED_ARRAY_VISITING_COUNT = 102
+const REVERSE_SORTED_ARRAY_VISITING_COUNT = 87
+const EQUAL_ARRAY_VISITING_COUNT = 79
 
-describe('ShellSort', () => {
-  it('должен сортировать массив', () => {
-    SortTester.testSort(ShellSort)
+describe('MergeSort', () => {
+  it('должен отсортировать массив', () => {
+    SortTester.testSort(MergeSort)
   })
 
-  it('должен сортировать массив с кастомной функцией сравнения', () => {
-    SortTester.testSortWithCustomComparator(ShellSort)
+  it('должен отсортировать массив с помощью кастомной функции сравнения', () => {
+    SortTester.testSortWithCustomComparator(MergeSort)
   })
 
-  it('должен сортировать отрицательные числа', () => {
-    SortTester.testNegativeNumbersSort(ShellSort)
+  it('должен выполнить стабильную сортировку', () => {
+    SortTester.testSortStability(MergeSort)
+  })
+
+  it('должен отсортировать отрицательные числа', () => {
+    SortTester.testNegativeNumbersSort(MergeSort)
   })
 
   it('должен посетить массив одинаковых элементов указанное количество раз', () => {
     SortTester.testAlgorithmTimeComplexity(
-      ShellSort,
+      MergeSort,
       equalArr,
       EQUAL_ARRAY_VISITING_COUNT,
     )
@@ -36,7 +40,7 @@ describe('ShellSort', () => {
 
   it('должен посетить отсортированный массив указанное количество раз', () => {
     SortTester.testAlgorithmTimeComplexity(
-      ShellSort,
+      MergeSort,
       sortedArr,
       SORTED_ARRAY_VISITING_COUNT,
     )
@@ -44,7 +48,7 @@ describe('ShellSort', () => {
 
   it('должен посетить неотсортированный массив указанное количество раз', () => {
     SortTester.testAlgorithmTimeComplexity(
-      ShellSort,
+      MergeSort,
       notSortedArr,
       NOT_SORTED_ARRAY_VISITING_COUNT,
     )
@@ -52,7 +56,7 @@ describe('ShellSort', () => {
 
   it('должен посетить инвертированный отсортированный массив указанное количество раз', () => {
     SortTester.testAlgorithmTimeComplexity(
-      ShellSort,
+      MergeSort,
       reverseArr,
       REVERSE_SORTED_ARRAY_VISITING_COUNT,
     )

@@ -1,6 +1,7 @@
 import Sort from './sort'
 
 export default class MergeSort extends Sort {
+  // Сортирует массив методом слияния
   sort(arr) {
     this.callbacks.visitingCallback(null)
 
@@ -23,6 +24,7 @@ export default class MergeSort extends Sort {
     return this.mergeSortedArrays(leftSortedArray, rightSortedArray)
   }
 
+  // Объединяет два отсортированных массива
   mergeSortedArrays(leftArray, rightArray) {
     const _arr = []
 
@@ -33,7 +35,7 @@ export default class MergeSort extends Sort {
     while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
       let minItem = null
 
-      // Находим минимальный между левым и правым массивами элемент
+      // Находим минимальный элемент подмассивов
       if (
         this.comparator.lessThanOrEqual(
           leftArray[leftIndex],
@@ -55,7 +57,7 @@ export default class MergeSort extends Sort {
       this.callbacks.visitingCallback(minItem)
     }
 
-    // Добавляем оставшиеся элементы в отсортированный массив
+    // Добавляем оставшиеся элементы в результирующий массив
     return _arr
       .concat(leftArray.slice(leftIndex))
       .concat(rightArray.slice(rightIndex))

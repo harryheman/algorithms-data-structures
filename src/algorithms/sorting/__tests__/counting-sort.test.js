@@ -7,22 +7,22 @@ import {
   SortTester,
 } from '../sort-tester'
 
-// Константы сложности
+// Константы временной сложности
 const SORTED_ARRAY_VISITING_COUNT = 60
 const NOT_SORTED_ARRAY_VISITING_COUNT = 60
 const REVERSE_SORTED_ARRAY_VISITING_COUNT = 60
 const EQUAL_ARRAY_VISITING_COUNT = 60
 
 describe('CountingSort', () => {
-  it('должен сортировать массив', () => {
+  it('должен отсортировать массив', () => {
     SortTester.testSort(CountingSort)
   })
 
-  it('должен сортировать отрицательные числа', () => {
+  it('должен отсортировать отрицательные числа', () => {
     SortTester.testNegativeNumbersSort(CountingSort)
   })
 
-  it('должен позволять использовать определенное максимальное/минимальное целое число для ускорения сортировки', () => {
+  it('должен принимать максимальное/минимальное целые числа для ускорения сортировки', () => {
     const visitingCallback = jest.fn()
     const sorter = new CountingSort({ visitingCallback })
 
@@ -39,7 +39,7 @@ describe('CountingSort', () => {
     )
 
     expect(sortedArray).toEqual(sortedArr)
-    // Обычно visitingCallback вызывается 60 раз, но в данном случае
+    // Обычно `visitingCallback()` вызывается 60 раз, но в данном случае
     // он должен быть вызван только 40 раз
     expect(visitingCallback).toHaveBeenCalledTimes(40)
   })

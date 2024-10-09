@@ -2,7 +2,7 @@ import BucketSort from '../bucket-sort'
 import { equalArr, notSortedArr, reverseArr, sortedArr } from '../sort-tester'
 
 describe('BucketSort', () => {
-  it('должен сортировать массивы чисел с разным количеством групп', () => {
+  it('должен отсортировать массивы чисел с разным количеством блоков', () => {
     expect(BucketSort(notSortedArr, 4)).toEqual(sortedArr)
     expect(BucketSort(equalArr, 4)).toEqual(equalArr)
     expect(BucketSort(reverseArr, 4)).toEqual(sortedArr)
@@ -19,7 +19,7 @@ describe('BucketSort', () => {
     expect(BucketSort(sortedArr, 50)).toEqual(sortedArr)
   })
 
-  it('должен сортировать массивы чисел с 1 группой', () => {
+  it('должен отсортировать массивы чисел с одной группой', () => {
     expect(BucketSort(notSortedArr)).toEqual(sortedArr)
     expect(BucketSort(equalArr)).toEqual(equalArr)
     expect(BucketSort(reverseArr)).toEqual(sortedArr)

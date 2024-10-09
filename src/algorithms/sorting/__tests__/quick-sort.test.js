@@ -7,26 +7,26 @@ import {
   SortTester,
 } from '../sort-tester'
 
-// Константы сложности
+// Константы временной сложности
 const SORTED_ARRAY_VISITING_COUNT = 190
 const NOT_SORTED_ARRAY_VISITING_COUNT = 62
 const REVERSE_SORTED_ARRAY_VISITING_COUNT = 190
 const EQUAL_ARRAY_VISITING_COUNT = 19
 
 describe('QuickSort', () => {
-  it('должен сортировать массив', () => {
+  it('должен отсортировать массив', () => {
     SortTester.testSort(QuickSort)
   })
 
-  it('должен сортировать массив с кастомной функцией сравнения', () => {
+  it('должен отсортировать массив с помощью кастомной функции сравнения', () => {
     SortTester.testSortWithCustomComparator(QuickSort)
   })
 
-  it('должен выполнять стабильную сортировку', () => {
+  it('должен выполнить стабильную сортировку', () => {
     SortTester.testSortStability(QuickSort)
   })
 
-  it('должен сортировать отрицательные числа', () => {
+  it('должен отсортировать отрицательные числа', () => {
     SortTester.testNegativeNumbersSort(QuickSort)
   })
 

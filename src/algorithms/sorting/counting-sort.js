@@ -2,7 +2,8 @@ import Sort from './sort'
 
 export default class CountingSort extends Sort {
   sort(arr, smallestItem, biggestItem) {
-    // Инициализируем наименьшее и наибольшее числа для построения массива сегментов позже
+    // Инициализируем наименьшее и наибольшее числа
+    // для построения массива сегментов (buckets) позже
     let _smallestItem = smallestItem || 0
     let _biggestItem = biggestItem || 0
 
@@ -22,10 +23,9 @@ export default class CountingSort extends Sort {
       })
     }
 
-    // Инициализируем массив сегментов,
-    // который будет содержать частоту элементов `arr`
+    // Инициализируем массив сегментов, который будет содержать
+    // количество вхождений (частоту) элементов `arr`
     const buckets = new Array(_biggestItem - _smallestItem + 1).fill(0)
-
     arr.forEach((item) => {
       this.callbacks.visitingCallback(item)
 
@@ -39,7 +39,7 @@ export default class CountingSort extends Sort {
       buckets[i] += buckets[i - 1]
     }
 
-    // Теперь сдвинем частоты вправо, чтобы они показывали правильные числа.
+    // Сдвигаем частоты вправо, чтобы они показывали правильные числа.
     // Если мы этого не сделаем, то `buckets[5]`, например, покажет, сколько
     // элементов, меньших 5, нужно поместить слева от 5 в отсортированном массиве,
     // ВКЛЮЧАЯ 5. После сдвига 5 будет исключено
@@ -48,7 +48,6 @@ export default class CountingSort extends Sort {
 
     // Формируем отсортированный массив
     const sortedArr = new Array(arr.length).fill(null)
-
     arr.forEach((item) => {
       this.callbacks.visitingCallback(item)
 

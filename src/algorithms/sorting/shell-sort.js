@@ -2,12 +2,14 @@ import Sort from './sort'
 
 export default class ShellSort extends Sort {
   sort(arr) {
-    const _arr = arr.slice()
+    // Копируем оригинальный массив во избежание его модификации
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/structuredClone
+    const _arr = structuredClone(arr)
 
-    // Определяем шаг
+    // Определяем шаг - половина массива
     let step = Math.floor(_arr.length / 2)
 
-    // Пока шаг больше нуля, сравниваем и меняем местами элементы
+    // До тех пор, пока шаг больше нуля
     while (step > 0) {
       // Сравниваем все пары элементов
       for (let i = 0; i < _arr.length - step; i++) {
@@ -32,7 +34,8 @@ export default class ShellSort extends Sort {
           currentIndex -= step
         }
       }
-      // Уменьшаем шаг
+
+      // Уменьшаем шаг в 2 раза
       step = Math.floor(step / 2)
     }
 

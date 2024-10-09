@@ -2,7 +2,9 @@ import Sort from './sort'
 
 export default class QuickSort extends Sort {
   sort(arr) {
-    const _arr = arr.slice()
+    // Копируем оригинальный массив во избежание его модификации
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/structuredClone
+    const _arr = structuredClone(arr)
 
     // Если массив пустой или содержит только один элемент,
     // возвращаем его, поскольку он уже отсортирован
@@ -13,7 +15,7 @@ export default class QuickSort extends Sort {
     const leftArr = []
     const rightArr = []
 
-    // Берем первый элемент массива в качестве точки отсчета
+    // Берем первый элемент массива в качестве опорного
     const pivot = _arr.shift()
     const centerArr = [pivot]
 

@@ -1,4 +1,4 @@
-import SelectionSort from '../selection-sort'
+import HeapSort from '../heap-sort'
 import {
   equalArr,
   notSortedArr,
@@ -7,28 +7,30 @@ import {
   SortTester,
 } from '../sort-tester'
 
-// Константы сложности
-const SORTED_ARRAY_VISITING_COUNT = 209
-const NOT_SORTED_ARRAY_VISITING_COUNT = 209
-const REVERSE_SORTED_ARRAY_VISITING_COUNT = 209
-const EQUAL_ARRAY_VISITING_COUNT = 209
+// Константы временной сложности.
+// Обратите внимание, что мы не учитываем время реструктуризации кучи,
+// поэтому в реальности числа будут бОльшими
+const SORTED_ARRAY_VISITING_COUNT = 40
+const NOT_SORTED_ARRAY_VISITING_COUNT = 40
+const REVERSE_SORTED_ARRAY_VISITING_COUNT = 40
+const EQUAL_ARRAY_VISITING_COUNT = 40
 
-describe('SelectionSort', () => {
-  it('должен сортировать массив', () => {
-    SortTester.testSort(SelectionSort)
+describe('HeapSort', () => {
+  it('должен отсортировать массив', () => {
+    SortTester.testSort(HeapSort)
   })
 
-  it('должен сортировать массив с кастомной функцией сравнения', () => {
-    SortTester.testSortWithCustomComparator(SelectionSort)
+  it('должен отсортировать массив с помощью кастомной функции сравнения', () => {
+    SortTester.testSortWithCustomComparator(HeapSort)
   })
 
-  it('должен сортировать отрицательные числа', () => {
-    SortTester.testNegativeNumbersSort(SelectionSort)
+  it('должен отсортировать отрицательные числа', () => {
+    SortTester.testNegativeNumbersSort(HeapSort)
   })
 
   it('должен посетить массив одинаковых элементов указанное количество раз', () => {
     SortTester.testAlgorithmTimeComplexity(
-      SelectionSort,
+      HeapSort,
       equalArr,
       EQUAL_ARRAY_VISITING_COUNT,
     )
@@ -36,7 +38,7 @@ describe('SelectionSort', () => {
 
   it('должен посетить отсортированный массив указанное количество раз', () => {
     SortTester.testAlgorithmTimeComplexity(
-      SelectionSort,
+      HeapSort,
       sortedArr,
       SORTED_ARRAY_VISITING_COUNT,
     )
@@ -44,7 +46,7 @@ describe('SelectionSort', () => {
 
   it('должен посетить неотсортированный массив указанное количество раз', () => {
     SortTester.testAlgorithmTimeComplexity(
-      SelectionSort,
+      HeapSort,
       notSortedArr,
       NOT_SORTED_ARRAY_VISITING_COUNT,
     )
@@ -52,7 +54,7 @@ describe('SelectionSort', () => {
 
   it('должен посетить инвертированный отсортированный массив указанное количество раз', () => {
     SortTester.testAlgorithmTimeComplexity(
-      SelectionSort,
+      HeapSort,
       reverseArr,
       REVERSE_SORTED_ARRAY_VISITING_COUNT,
     )
