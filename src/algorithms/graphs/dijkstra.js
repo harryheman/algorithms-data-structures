@@ -1,9 +1,14 @@
 import PriorityQueue from '../../data-structures/priority-queue'
 
+// Функция принимает граф и начальную вершину
 export default function dijkstra(graph, startNode) {
+  // Расстояния
   const distances = {}
+  // Посещенные вершины
   const visited = {}
+  // Предыдущие вершины
   const previous = {}
+
   const queue = new PriorityQueue()
 
   // Инициализируем все расстояния бесконечностью, предполагая, что
@@ -13,10 +18,10 @@ export default function dijkstra(graph, startNode) {
     previous[node.getKey()] = null
   }
 
-  // Мы находимся в начальной вершине, поэтому расстояние равняется 0
+  // Мы находимся в начальной вершине, расстояние до нее равняется 0
   distances[startNode.getKey()] = 0
 
-  // Инициализируем очередь вершин
+  // Добавляем текущую вершину в очередь
   queue.add(startNode, 0)
 
   // Перебираем вершины, пока очередь не опустеет
@@ -26,7 +31,7 @@ export default function dijkstra(graph, startNode) {
 
     // Перебираем непосещенных соседей текущей вершины
     current.getNeighbors().forEach((neighbor) => {
-      // Посещаем только непосещенные вершины
+      // Если вершина еще не была посещена
       if (!visited[neighbor.getKey()]) {
         // Обновляем расстояние до каждого соседа
         const edge = graph.findEdge(current, neighbor)

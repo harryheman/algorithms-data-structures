@@ -4,7 +4,7 @@ import GraphEdge from '../../../data-structures/graph/edge'
 import breadthFirstSearch from '../breadth-first-search'
 
 describe('breadthFirstSearch', () => {
-  it('should perform BFS operation on graph', () => {
+  it('должен выполнить поиск в ширину по графу', () => {
     const graph = new Graph(true)
 
     const nodeA = new GraphNode('A')
@@ -42,10 +42,10 @@ describe('breadthFirstSearch', () => {
     const enterNodeCallback = jest.fn()
     const leaveNodeCallback = jest.fn()
 
-    // Traverse graphs without callbacks first.
+    // Обходим граф с дефолтными обработчиками
     breadthFirstSearch(graph, nodeA)
 
-    // Traverse graph with enterNode and leaveNode callbacks.
+    // Обходим граф с кастомными обработчиками
     breadthFirstSearch(graph, nodeA, {
       enterNode: enterNodeCallback,
       leaveNode: leaveNodeCallback,
@@ -105,7 +105,7 @@ describe('breadthFirstSearch', () => {
     }
   })
 
-  it('should allow to create custom node visiting logic', () => {
+  it('должен проверить возможность кастомизации логики посещения узлов графа', () => {
     const graph = new Graph(true)
 
     const nodeA = new GraphNode('A')

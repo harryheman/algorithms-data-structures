@@ -1,10 +1,10 @@
+import GraphEdge from '../../../../data-structures/graph/edge'
 import Graph from '../../../../data-structures/graph/index'
 import GraphNode from '../../../../data-structures/graph/node'
-import GraphEdge from '../../../../data-structures/graph/edge'
-import detectUndirectedCycle from '../undirected'
+import detectUndirectedCycleUsingDisjointSet from '../undirected-disjoint-set'
 
-describe('detectUndirectedCycle', () => {
-  it('должен обнаруживать ненаправленный цикл', () => {
+describe('detectUndirectedCycleUsingDisjointSet', () => {
+  it('должен обнаружить цикл в ненаправленном графе', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -27,15 +27,10 @@ describe('detectUndirectedCycle', () => {
       .addEdge(edgeBC)
       .addEdge(edgeCD)
 
-    expect(detectUndirectedCycle(graph)).toBeNull()
+    expect(detectUndirectedCycleUsingDisjointSet(graph)).toBe(false)
 
     graph.addEdge(edgeDE)
 
-    expect(detectUndirectedCycle(graph)).toEqual({
-      B: nodeC,
-      C: nodeD,
-      D: nodeE,
-      E: nodeB,
-    })
+    expect(detectUndirectedCycleUsingDisjointSet(graph)).toBe(true)
   })
 })

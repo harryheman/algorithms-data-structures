@@ -1,10 +1,10 @@
+import GraphEdge from '../../../data-structures/graph/edge'
 import Graph from '../../../data-structures/graph/index'
 import GraphNode from '../../../data-structures/graph/node'
-import GraphEdge from '../../../data-structures/graph/edge'
 import kruskal from '../kruskal'
 
 describe('kruskal', () => {
-  it('should fire an error for directed graph', () => {
+  it('при передаче направленного графа должно выбрасываться исключение', () => {
     function applyPrimToDirectedGraph() {
       const graph = new Graph(true)
 
@@ -14,7 +14,7 @@ describe('kruskal', () => {
     expect(applyPrimToDirectedGraph).toThrowError()
   })
 
-  it('should find minimum spanning tree', () => {
+  it('должен найти минимальное остовное дерево', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -62,7 +62,7 @@ describe('kruskal', () => {
     expect(minimumSpanningTree.toString()).toBe('E,C,A,B,D,F,G')
   })
 
-  it('should find minimum spanning tree for simple graph', () => {
+  it('должен найти минимальное остовное дерево для простого графа', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')

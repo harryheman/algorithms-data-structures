@@ -1,10 +1,10 @@
+import GraphEdge from '../../../data-structures/graph/edge'
 import Graph from '../../../data-structures/graph/index'
 import GraphNode from '../../../data-structures/graph/node'
-import GraphEdge from '../../../data-structures/graph/edge'
-import bellmanFord from '../bellman-ford'
+import dijkstra from '../dijkstra'
 
-describe('bellmanFord', () => {
-  it('should find minimum paths to all vertices for undirected graph', () => {
+describe('dijkstra', () => {
+  it('должен найти минимальные пути до всех вершин ненаправленного графа', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -43,7 +43,7 @@ describe('bellmanFord', () => {
       .addEdge(edgeFG)
       .addEdge(edgeEG)
 
-    const { distances, previous } = bellmanFord(graph, nodeA)
+    const { distances, previous } = dijkstra(graph, nodeA)
 
     expect(distances).toEqual({
       H: Infinity,
@@ -65,7 +65,7 @@ describe('bellmanFord', () => {
     expect(previous.H).toBeNull()
   })
 
-  it('should find minimum paths to all vertices for directed graph with negative edge weights', () => {
+  it('должен найти минимальные пути до всех вершин направленного графа с отрицательными весами ребер', () => {
     const nodeS = new GraphNode('S')
     const nodeE = new GraphNode('E')
     const nodeA = new GraphNode('A')
@@ -95,7 +95,7 @@ describe('bellmanFord', () => {
       .addEdge(edgeCB)
       .addEdge(edgeBA)
 
-    const { distances, previous } = bellmanFord(graph, nodeS)
+    const { distances, previous } = dijkstra(graph, nodeS)
 
     expect(distances).toEqual({
       H: Infinity,

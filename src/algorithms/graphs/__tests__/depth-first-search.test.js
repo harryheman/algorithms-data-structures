@@ -1,10 +1,10 @@
+import GraphEdge from '../../../data-structures/graph/edge'
 import Graph from '../../../data-structures/graph/index'
 import GraphNode from '../../../data-structures/graph/node'
-import GraphEdge from '../../../data-structures/graph/edge'
 import depthFirstSearch from '../depth-first-search'
 
 describe('depthFirstSearch', () => {
-  it('should perform DFS operation on graph', () => {
+  it('должен выполнить поиск в глубину по графу', () => {
     const graph = new Graph(true)
 
     const nodeA = new GraphNode('A')
@@ -39,10 +39,10 @@ describe('depthFirstSearch', () => {
     const enterNodeCallback = jest.fn()
     const leaveNodeCallback = jest.fn()
 
-    // Traverse graphs without callbacks first to check default ones.
+    // Обходим граф с дефолтными обработчиками
     depthFirstSearch(graph, nodeA)
 
-    // Traverse graph with enterNode and leaveNode callbacks.
+    // Обходим граф с кастомными обработчиками
     depthFirstSearch(graph, nodeA, {
       enterNode: enterNodeCallback,
       leaveNode: leaveNodeCallback,
@@ -100,7 +100,7 @@ describe('depthFirstSearch', () => {
     }
   })
 
-  it('allow users to redefine node visiting logic', () => {
+  it('должен проверить возможность кастомизации логики посещения узлов графа', () => {
     const graph = new Graph(true)
 
     const nodeA = new GraphNode('A')

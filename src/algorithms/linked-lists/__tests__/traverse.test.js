@@ -2,18 +2,18 @@ import LinkedList from '../../../data-structures/linked-list'
 import traverse from '../traverse'
 
 describe('traverse', () => {
-  it('должен обходить связанный список', () => {
+  it('должен обойти связный список в прямом порядке', () => {
     const linkedList = new LinkedList()
 
     linkedList.append(1).append(2).append(3)
 
-    const traversedNodeValues = []
+    const nodeValues = []
     const traversalCallback = (nodeValue) => {
-      traversedNodeValues.push(nodeValue)
+      nodeValues.push(nodeValue)
     }
 
     traverse(linkedList, traversalCallback)
 
-    expect(traversedNodeValues).toEqual([1, 2, 3])
+    expect(nodeValues).toEqual([1, 2, 3])
   })
 })

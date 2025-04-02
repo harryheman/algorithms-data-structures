@@ -3,8 +3,7 @@ import Sort from './sort'
 export default class QuickSort extends Sort {
   sort(arr) {
     // Копируем оригинальный массив во избежание его модификации
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/structuredClone
-    const _arr = structuredClone(arr)
+    const _arr = [...arr]
 
     // Если массив пустой или содержит только один элемент,
     // возвращаем его, поскольку он уже отсортирован

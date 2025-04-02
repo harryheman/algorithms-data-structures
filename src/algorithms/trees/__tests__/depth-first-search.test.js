@@ -1,8 +1,8 @@
 import BinaryTreeNode from '../../../data-structures/tree/binary-tree-node'
-import breadthFirstSearch from '../breadth-first-search'
+import depthFirstSearch from '../depth-first-search'
 
-describe('breadthFirstSearch', () => {
-  it('должен выполнять поиск в ширину по дереву', () => {
+describe('depthFirstSearch', () => {
+  it('должен обойти дерево в глубину', () => {
     const nodeA = new BinaryTreeNode('A')
     const nodeB = new BinaryTreeNode('B')
     const nodeC = new BinaryTreeNode('C')
@@ -15,17 +15,16 @@ describe('breadthFirstSearch', () => {
     nodeB.setLeft(nodeD).setRight(nodeE)
     nodeC.setLeft(nodeF).setRight(nodeG)
 
-    // Обход по порядку
     expect(nodeA.toString()).toBe('D,B,E,A,F,C,G')
 
     const enterNodeCallback = jest.fn()
     const leaveNodeCallback = jest.fn()
 
-    // Обходим дерево с дефолтными колбеками
-    breadthFirstSearch(nodeA)
+    // Обходим дерево с дефолтными обработчиками
+    depthFirstSearch(nodeA)
 
-    // Обходим дерево с кастомными колбеками
-    breadthFirstSearch(nodeA, {
+    // Обходим дерево с кастомными обработчиками
+    depthFirstSearch(nodeA, {
       enterNode: enterNodeCallback,
       leaveNode: leaveNodeCallback,
     })
@@ -36,23 +35,23 @@ describe('breadthFirstSearch', () => {
     // Проверяем вход в узлы
     expect(enterNodeCallback.mock.calls[0][0].value).toEqual('A')
     expect(enterNodeCallback.mock.calls[1][0].value).toEqual('B')
-    expect(enterNodeCallback.mock.calls[2][0].value).toEqual('C')
-    expect(enterNodeCallback.mock.calls[3][0].value).toEqual('D')
-    expect(enterNodeCallback.mock.calls[4][0].value).toEqual('E')
+    expect(enterNodeCallback.mock.calls[2][0].value).toEqual('D')
+    expect(enterNodeCallback.mock.calls[3][0].value).toEqual('E')
+    expect(enterNodeCallback.mock.calls[4][0].value).toEqual('C')
     expect(enterNodeCallback.mock.calls[5][0].value).toEqual('F')
     expect(enterNodeCallback.mock.calls[6][0].value).toEqual('G')
 
-    // Проверяем покидание узлов
-    expect(leaveNodeCallback.mock.calls[0][0].value).toEqual('A')
-    expect(leaveNodeCallback.mock.calls[1][0].value).toEqual('B')
-    expect(leaveNodeCallback.mock.calls[2][0].value).toEqual('C')
-    expect(leaveNodeCallback.mock.calls[3][0].value).toEqual('D')
-    expect(leaveNodeCallback.mock.calls[4][0].value).toEqual('E')
-    expect(leaveNodeCallback.mock.calls[5][0].value).toEqual('F')
-    expect(leaveNodeCallback.mock.calls[6][0].value).toEqual('G')
+    // Проверяем выход из узлов
+    expect(leaveNodeCallback.mock.calls[0][0].value).toEqual('D')
+    expect(leaveNodeCallback.mock.calls[1][0].value).toEqual('E')
+    expect(leaveNodeCallback.mock.calls[2][0].value).toEqual('B')
+    expect(leaveNodeCallback.mock.calls[3][0].value).toEqual('F')
+    expect(leaveNodeCallback.mock.calls[4][0].value).toEqual('G')
+    expect(leaveNodeCallback.mock.calls[5][0].value).toEqual('C')
+    expect(leaveNodeCallback.mock.calls[6][0].value).toEqual('A')
   })
 
-  it('должен проверять возможность кастомизации колбеков', () => {
+  it('должен проверить возможность кастомизации обработчиков', () => {
     const nodeA = new BinaryTreeNode('A')
     const nodeB = new BinaryTreeNode('B')
     const nodeC = new BinaryTreeNode('C')
@@ -65,17 +64,16 @@ describe('breadthFirstSearch', () => {
     nodeB.setLeft(nodeD).setRight(nodeE)
     nodeC.setLeft(nodeF).setRight(nodeG)
 
-    // Обход по порядку
     expect(nodeA.toString()).toBe('D,B,E,A,F,C,G')
 
     const enterNodeCallback = jest.fn()
     const leaveNodeCallback = jest.fn()
 
-    // Обходим дерево с дефолтными колбеками
-    breadthFirstSearch(nodeA)
+    // Обходим дерево с дефолтными обработчиками
+    depthFirstSearch(nodeA)
 
-    // Обходим дерево с кастомными колбеками
-    breadthFirstSearch(nodeA, {
+    // Обходим дерево с кастомными обработчиками
+    depthFirstSearch(nodeA, {
       allowTraverse: (node, child) => {
         // Запрещаем обход левой части дерева
         return child.value !== 'B'
@@ -93,10 +91,10 @@ describe('breadthFirstSearch', () => {
     expect(enterNodeCallback.mock.calls[2][0].value).toEqual('F')
     expect(enterNodeCallback.mock.calls[3][0].value).toEqual('G')
 
-    // Проверяем покидание узлов
-    expect(leaveNodeCallback.mock.calls[0][0].value).toEqual('A')
-    expect(leaveNodeCallback.mock.calls[1][0].value).toEqual('C')
-    expect(leaveNodeCallback.mock.calls[2][0].value).toEqual('F')
-    expect(leaveNodeCallback.mock.calls[3][0].value).toEqual('G')
+    // Проверяем выход из узлов
+    expect(leaveNodeCallback.mock.calls[0][0].value).toEqual('F')
+    expect(leaveNodeCallback.mock.calls[1][0].value).toEqual('G')
+    expect(leaveNodeCallback.mock.calls[2][0].value).toEqual('C')
+    expect(leaveNodeCallback.mock.calls[3][0].value).toEqual('A')
   })
 })

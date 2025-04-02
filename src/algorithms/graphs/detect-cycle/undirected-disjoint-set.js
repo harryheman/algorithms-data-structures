@@ -1,7 +1,7 @@
 import DisjoinSet from '../../../data-structures/disjoint-set'
 
 export default function detectUndirectedCycleUsingDisjointSet(graph) {
-  // Создаем начальные непересекающиеся одноэлементные множества для каждого узла графа
+  // Создаем непересекающиеся одноэлементные множества для каждого узла графа
   const keyExtractor = (node) => node.getKey()
   const disjointSet = new DisjoinSet(keyExtractor)
   graph.getAllNodes().forEach((node) => disjointSet.makeSet(node))

@@ -1,9 +1,9 @@
 export default function weightedRandom(items, weights) {
   if (!items.length || !weights.length) {
-    throw new Error('Элементы/веса не должны быть пустыми!')
+    throw new Error('Элементы/веса не должны быть пустыми')
   }
   if (items.length !== weights.length) {
-    throw new Error('Элементы и веса должны быть одинаковой длины!')
+    throw new Error('Элементы и веса должны быть одинаковой длины')
   }
 
   const cumulativeWeights = []

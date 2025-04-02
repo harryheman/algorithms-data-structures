@@ -1,10 +1,10 @@
+import GraphEdge from '../../../../data-structures/graph/edge'
 import Graph from '../../../../data-structures/graph/index'
 import GraphNode from '../../../../data-structures/graph/node'
-import GraphEdge from '../../../../data-structures/graph/edge'
 import detectDirectedCycle from '../directed'
 
 describe('detectDirectedCycle', () => {
-  it('должен обнаруживать направленный цикл', () => {
+  it('должен обнаружить цикл в направленном графе', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')

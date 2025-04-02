@@ -6,7 +6,7 @@ describe('weightedRandom', () => {
       weightedRandom([], [])
     }
     expect(getWeightedRandomWithInvalidInputs).toThrow(
-      'Элементы/веса не должны быть пустыми!',
+      'Элементы/веса не должны быть пустыми',
     )
   })
 
@@ -15,7 +15,7 @@ describe('weightedRandom', () => {
       weightedRandom(['a', 'b', 'c'], [10, 0])
     }
     expect(getWeightedRandomWithInvalidInputs).toThrow(
-      'Элементы и веса должны быть одинаковой длины!',
+      'Элементы и веса должны быть одинаковой длины',
     )
   })
 
