@@ -1,29 +1,40 @@
+// Функция принимает начальный узел, все пути
+// на данной итерации и текущий путь.
+// Возвращает все возможные пути
 function findAllPaths(startNode, paths = [], path = []) {
+  // Текущий путь
   const currentPath = [...path, startNode]
 
+  // Посещенные узлы
   const visitedNodes = currentPath.reduce((a, n) => {
     const copy = { ...a }
     copy[n.getKey()] = n
     return copy
   }, {})
 
+  // Непосещенные соседи
   const unvisitedNeighbors = startNode
     .getNeighbors()
     .filter((n) => !visitedNodes[n.getKey()])
 
-  // Если нет непосещенных соседей, то путь завершен, сохраняем его
+  // Если непосещенных соседей не осталось,
+  // то путь завершен, сохраняем его
   if (!unvisitedNeighbors.length) {
     paths.push(currentPath)
     return paths
   }
 
+  // Перебираем непосещенных соседей
   for (const neighbor of unvisitedNeighbors) {
+    // Рекурсивно исследуем их пути
     findAllPaths(neighbor, paths, currentPath)
   }
 
   return paths
 }
 
+// Функция принимает матрицу смежности, индексы узлов и цикл.
+// Возвращает вес/стоимость цикла
 function getCycleWeight(adjacencyMatrix, nodesIndices, cycle) {
   let weight = 0
 
@@ -38,12 +49,11 @@ function getCycleWeight(adjacencyMatrix, nodesIndices, cycle) {
   return weight
 }
 
-// Brute force
-
+// Функция принимает граф
 export default function bfTravellingSalesman(graph) {
   const startNode = graph.getAllNodes()[0]
 
-  // Грубая сила
+  // Получаем все возможные пути
   const paths = findAllPaths(startNode)
 
   // Нас интересуют только пути, образующие циклы
@@ -54,15 +64,21 @@ export default function bfTravellingSalesman(graph) {
     return lastNodeNeighbors.includes(startNode)
   })
 
-  // Перебираем циклы и берем цикл с наименьшим весом
+  // Матрица смежности
   const adjacencyMatrix = graph.getAdjacencyMatrix()
+  // Индексы узлов
   const nodesIndices = graph.getNodesIndices()
+  // Путь коммивояжера
   let salesmanPath = []
+  // Минимальный вес пути коммивояжера
   let salesmanPathWeight = null
 
+  // Перебираем циклы
   for (const cycle of cycles) {
+    // Вычисляем вес цикла
     const cycleWeight = getCycleWeight(adjacencyMatrix, nodesIndices, cycle)
 
+    // Нас интересует путь с минимальным весом
     if (salesmanPathWeight === null || cycleWeight < salesmanPathWeight) {
       salesmanPath = cycle
       salesmanPathWeight = cycleWeight

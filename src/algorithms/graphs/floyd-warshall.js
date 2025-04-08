@@ -20,20 +20,20 @@ export default function floydWarshall(graph) {
   // Инициализируем `distances` расстояниями,
   // которые нам уже известны (из имеющихся ребер).
   // Также инициализируем матрицу предыдущих вершин
-  vertices.forEach((startVertex, startIndex) => {
-    vertices.forEach((endVertex, endIndex) => {
-      if (startVertex === endVertex) {
+  vertices.forEach((startNode, startIndex) => {
+    vertices.forEach((endNode, endIndex) => {
+      if (startNode === endNode) {
         // Расстояние вершины до самой себя составляет 0
         distances[startIndex][endIndex] = 0
       } else {
         // Находим ребро между начальной и конечной вершинами
-        const edge = graph.findEdge(startVertex, endVertex)
+        const edge = graph.findEdge(startNode, endNode)
 
         // Если такое ребро имеется
         if (edge) {
           // Сохраняем расстояние и предыдущую вершину
           distances[startIndex][endIndex] = edge.weight
-          nextVertices[startIndex][endIndex] = startVertex
+          nextVertices[startIndex][endIndex] = startNode
         } else {
           distances[startIndex][endIndex] = Infinity
         }
@@ -47,22 +47,22 @@ export default function floydWarshall(graph) {
   // Средняя вершина также может быть одной из вершин графа.
   // Таким образом, нам требуется три цикла по всем вершинам графа:
   // для начальной, конечной и средней вершин
-  vertices.forEach((middleVertex, middleIndex) => {
-    // Путь начинается от `startVertex` с `startIndex`
-    vertices.forEach((_startVertex, startIndex) => {
-      // Путь заканчивается `endVertex` с `endIndex`
-      vertices.forEach((_endVertex, endIndex) => {
-        // Сравниваем существующее расстояние от `startVertex` до `endVertex`,
-        // с расстоянием от `startVertex` до `endVertex`, но через `middleVertex`.
+  vertices.forEach((middleNode, middleIndex) => {
+    // Путь начинается от `startNode` с `startIndex`
+    vertices.forEach((_startNode, startIndex) => {
+      // Путь заканчивается `endNode` с `endIndex`
+      vertices.forEach((_endNode, endIndex) => {
+        // Сравниваем существующее расстояние от `startNode` до `endNode`,
+        // с расстоянием от `startNode` до `endNode`, но через `middleNode`.
         // Сохраняем кратчайшее расстояние и предыдущую вершину,
         // предоставляющую этот кратчайший путь
         const distViaMiddle =
           distances[startIndex][middleIndex] + distances[middleIndex][endIndex]
 
         if (distances[startIndex][endIndex] > distViaMiddle) {
-          // Мы нашли более короткий путь через `middleVertex`
+          // Мы нашли более короткий путь через `middleNode`
           distances[startIndex][endIndex] = distViaMiddle
-          nextVertices[startIndex][endIndex] = middleVertex
+          nextVertices[startIndex][endIndex] = middleNode
         }
       })
     })

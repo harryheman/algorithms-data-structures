@@ -1,10 +1,10 @@
+import GraphEdge from '../../../data-structures/graph/edge'
 import Graph from '../../../data-structures/graph/index'
 import GraphNode from '../../../data-structures/graph/node'
-import GraphEdge from '../../../data-structures/graph/edge'
 import stronglyConnectedComponents from '../strongly-connected-components'
 
 describe('stronglyConnectedComponents', () => {
-  it('должен обнаруживать сильно связанные компоненты в простом графе', () => {
+  it('должен обнаружить сильно связанные компоненты в простом графе', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -31,7 +31,7 @@ describe('stronglyConnectedComponents', () => {
     expect(components[1][0].getKey()).toBe(nodeD.getKey())
   })
 
-  it('должен обнаруживать сильно связанные компоненты в графе', () => {
+  it('должен обнаружить сильно связанные компоненты в графе', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')

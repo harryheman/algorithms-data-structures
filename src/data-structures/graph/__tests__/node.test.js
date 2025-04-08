@@ -5,12 +5,12 @@ describe('Node', () => {
   it('должен выбросить исключение при создании узла без значения', () => {
     let node = null
 
-    function createEmptyVertex() {
+    function createEmptyNode() {
       node = new Node()
     }
 
     expect(node).toBeNull()
-    expect(createEmptyVertex).toThrow()
+    expect(createEmptyNode).toThrow()
   })
 
   it('должен создать узел графа', () => {

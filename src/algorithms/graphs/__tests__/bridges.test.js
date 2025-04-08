@@ -4,7 +4,7 @@ import GraphEdge from '../../../data-structures/graph/edge'
 import graphBridges from '../bridges'
 
 describe('graphBridges', () => {
-  it('должен находить мосты в простом графе', () => {
+  it('должен найти мосты в простом графе', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -26,7 +26,7 @@ describe('graphBridges', () => {
     expect(bridges[2].getKey()).toBe(edgeAB.getKey())
   })
 
-  it('должен находить мосты в простом графе с обратными ребрами', () => {
+  it('должен найти мосты в простом графе с обратным ребром', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -47,7 +47,7 @@ describe('graphBridges', () => {
     expect(bridges[0].getKey()).toBe(edgeCD.getKey())
   })
 
-  it('должен находить мосты в графе', () => {
+  it('должен найти мосты в графе', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -88,7 +88,7 @@ describe('graphBridges', () => {
     expect(bridges[2].getKey()).toBe(edgeCD.getKey())
   })
 
-  it('должен находить мосты в графе, начиная с разных корневых узлов', () => {
+  it('должен найти мосты в графе с несколькими корневыми узлами', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -129,7 +129,7 @@ describe('graphBridges', () => {
     expect(bridges[2].getKey()).toBe(edgeCD.getKey())
   })
 
-  it('должен находить мосты еще в одном графе #1', () => {
+  it('должен найти мосты еще в одном графе #1', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -158,7 +158,7 @@ describe('graphBridges', () => {
     expect(bridges[1].getKey()).toBe(edgeCD.getKey())
   })
 
-  it('должен находить мосты еще в одном графе #2', () => {
+  it('должен найти мосты еще в одном графе #2', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')

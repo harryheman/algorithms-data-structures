@@ -1,6 +1,7 @@
 import Stack from '../../data-structures/stack'
 import depthFirstSearch from './depth-first-search'
 
+// Функция принимает граф
 export default function topologicalSort(graph) {
   // Узлы, которые мы хотим посетить
   const unvisited = graph.getAllNodes().reduce((a, c) => {
@@ -8,14 +9,15 @@ export default function topologicalSort(graph) {
     return a
   }, {})
 
-  // Узлы, которые мы посетили
+  // Посещенные узлы
   const visited = {}
 
   // Стек отсортированных узлов
   const stack = new Stack()
 
-  // Коллбеки для DFS
+  // Обработчики для DFS
   const callbacks = {
+    // Обработчик вхождения в узел
     enterNode: ({ currentNode }) => {
       // Добавляем узел в посещенные, если все его потомки были исследованы
       visited[currentNode.getKey()] = currentNode
@@ -23,15 +25,19 @@ export default function topologicalSort(graph) {
       // Удаляем узел из непосещенных
       delete unvisited[currentNode.getKey()]
     },
+    // Обработчик выхода из узла
     leaveNode: ({ currentNode }) => {
-      // После полностью исследованный узел в стек
+      // Помещаем полностью исследованный узел в стек
       stack.push(currentNode)
     },
+    // Обработчик определения допустимости обхода следующего узла
     allowTraverse: ({ nextNode }) => {
+      // Запрещаем обход посещенных узлов
       return !visited[nextNode.getKey()]
     },
   }
 
+  // Перебираем непосещенные узлы
   while (Object.keys(unvisited).length) {
     const currentKey = Object.keys(unvisited)[0]
     const currentNode = unvisited[currentKey]
@@ -39,5 +45,6 @@ export default function topologicalSort(graph) {
     depthFirstSearch(graph, currentNode, callbacks)
   }
 
+  // Преобразуем стек в массив и возвращаем его
   return stack.toArray()
 }

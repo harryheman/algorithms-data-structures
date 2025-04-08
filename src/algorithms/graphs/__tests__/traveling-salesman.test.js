@@ -1,10 +1,10 @@
+import GraphEdge from '../../../data-structures/graph/edge'
 import Graph from '../../../data-structures/graph/index'
 import GraphNode from '../../../data-structures/graph/node'
-import GraphEdge from '../../../data-structures/graph/edge'
-import bfTravellingSalesman from '../travelling-salesman'
+import bfTravellingSalesman from '../traveling-salesman'
 
-describe('bfTravellingSalesman', () => {
-  it('должен решать проблему для простого графа', () => {
+describe('bfTravelingSalesman', () => {
+  it('должен решить задачу для простого графа', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')

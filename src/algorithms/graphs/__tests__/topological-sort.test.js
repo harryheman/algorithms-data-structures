@@ -1,10 +1,10 @@
+import GraphEdge from '../../../data-structures/graph/edge'
 import Graph from '../../../data-structures/graph/index'
 import GraphNode from '../../../data-structures/graph/node'
-import GraphEdge from '../../../data-structures/graph/edge'
 import topologicalSort from '../topological-sort'
 
 describe('topologicalSort', () => {
-  it('should do topological sorting on graph', () => {
+  it('должен выполнить топологическую сортировку узлов графа', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')

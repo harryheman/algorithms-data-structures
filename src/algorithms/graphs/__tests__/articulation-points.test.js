@@ -1,10 +1,10 @@
+import GraphEdge from '../../../data-structures/graph/edge'
 import Graph from '../../../data-structures/graph/index'
 import GraphNode from '../../../data-structures/graph/node'
-import GraphEdge from '../../../data-structures/graph/edge'
 import articulationPoints from '../articulation-points'
 
 describe('articulationPoints', () => {
-  it('should find articulation points in simple graph', () => {
+  it('должен найти точки сочленения в простом графе', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -25,7 +25,7 @@ describe('articulationPoints', () => {
     expect(articulationPointsSet[1].getKey()).toBe(nodeB.getKey())
   })
 
-  it('should find articulation points in simple graph with back edge', () => {
+  it('должен найти точки сочленения в простом графе с обратным ребром #1', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -46,7 +46,7 @@ describe('articulationPoints', () => {
     expect(articulationPointsSet[0].getKey()).toBe(nodeC.getKey())
   })
 
-  it('should find articulation points in simple graph with back edge #2', () => {
+  it('должен найти точки сочленения в простом графе с обратным ребром #2', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -74,7 +74,7 @@ describe('articulationPoints', () => {
     expect(articulationPointsSet[0].getKey()).toBe(nodeC.getKey())
   })
 
-  it('should find articulation points in graph', () => {
+  it('должен найти точки сочленения в графе', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -116,7 +116,7 @@ describe('articulationPoints', () => {
     expect(articulationPointsSet[3].getKey()).toBe(nodeC.getKey())
   })
 
-  it('should find articulation points in graph starting with articulation root node', () => {
+  it('должен найти точки сочленения в графе, начинающемся с корневого узла-шарнира', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -158,7 +158,7 @@ describe('articulationPoints', () => {
     expect(articulationPointsSet[3].getKey()).toBe(nodeD.getKey())
   })
 
-  it('should find articulation points in yet another graph #1', () => {
+  it('должен найти точки сочленения еще в одном графе #1', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
@@ -187,7 +187,7 @@ describe('articulationPoints', () => {
     expect(articulationPointsSet[1].getKey()).toBe(nodeC.getKey())
   })
 
-  it('should find articulation points in yet another graph #2', () => {
+  it('должен найти точки сочленения еще в одном графе #2', () => {
     const nodeA = new GraphNode('A')
     const nodeB = new GraphNode('B')
     const nodeC = new GraphNode('C')
