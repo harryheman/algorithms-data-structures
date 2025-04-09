@@ -4,9 +4,10 @@
 
 Структуры данных и алгоритмы, реализованные на JavaScript.
 
-> [Источник вдохновения](https://github.com/trekhleb/javascript-algorithms)
+- [Раздел на MyJavaScript](https://my-js.org)
+- [Источник вдохновения](https://github.com/trekhleb/javascript-algorithms)
 
-## Запуск проекта
+## Запуск
 
 ```bash
 # Клонируем репозиторий
