@@ -16,7 +16,7 @@ export const shape = (m) => {
  */
 const validateType = (m) => {
   if (!m || !Array.isArray(m) || !Array.isArray(m[0])) {
-    throw new Error('Неправильный формат матрицы!')
+    throw new Error('Неправильный формат матрицы')
   }
 }
 
@@ -27,7 +27,7 @@ const validate2D = (m) => {
   validateType(m)
   const _shape = shape(m)
   if (_shape.length !== 2) {
-    throw new Error('Матрица не является двумерной!')
+    throw new Error('Матрица не является двумерной')
   }
 }
 
@@ -40,12 +40,12 @@ export const validateSameShape = (a, b) => {
   const _shapeA = shape(a)
   const _shapeB = shape(b)
   if (_shapeA.length !== _shapeB.length) {
-    throw new Error('Матрицы имеют разные направления!')
+    throw new Error('Матрицы имеют разные направления')
   }
 
   while (_shapeA.length && _shapeB.length) {
     if (_shapeA.pop() !== _shapeB.pop()) {
-      throw new Error('Матрицы имеют разную форму!')
+      throw new Error('Матрицы имеют разную форму')
     }
   }
 }

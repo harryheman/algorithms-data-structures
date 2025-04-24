@@ -6,7 +6,7 @@ export default class Heap {
   constructor(fn) {
     // Кучи должны создаваться с помощью соответствующих подклассов
     if (new.target === Heap) {
-      throw new TypeError('Кучу нельзя создавать напрямую!')
+      throw new TypeError('Кучу нельзя создавать напрямую')
     }
     // Представление кучи в виде массива
     this.heapContainer = []

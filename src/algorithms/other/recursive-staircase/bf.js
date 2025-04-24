@@ -1,6 +1,6 @@
 export default function bfRecursiveStaircase(n) {
   if (n < 0) {
-    throw new Error('n меньше нуля!')
+    throw new Error('n меньше нуля')
   }
   switch (n) {
     case 0:

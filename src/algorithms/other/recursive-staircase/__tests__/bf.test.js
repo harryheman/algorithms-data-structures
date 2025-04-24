@@ -2,7 +2,7 @@ import bfRecursiveStaircase from '../bf'
 
 describe('bfRecursiveStaircase', () => {
   it('должен вычислять количество вариантов методом грубой силы', () => {
-    expect(() => bfRecursiveStaircase(-1)).toThrowError('n меньше нуля!')
+    expect(() => bfRecursiveStaircase(-1)).toThrowError('n меньше нуля')
     expect(bfRecursiveStaircase(0)).toBe(0)
     expect(bfRecursiveStaircase(1)).toBe(1)
     expect(bfRecursiveStaircase(2)).toBe(2)

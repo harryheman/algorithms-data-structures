@@ -13,7 +13,7 @@ const edgeComparator = (a, b) => {
 export default class Node {
   constructor(value) {
     if (!value) {
-      throw new Error('Узел графа должен иметь значение!')
+      throw new Error('Узел графа должен иметь значение')
     }
 
     // Значение узла

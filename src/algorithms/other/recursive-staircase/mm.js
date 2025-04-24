@@ -1,6 +1,6 @@
 export default function mmRecursiveStaircase(stairs) {
   if (stairs < 0) {
-    throw new Error('n меньше нуля!')
+    throw new Error('n меньше нуля')
   }
 
   const memo = []

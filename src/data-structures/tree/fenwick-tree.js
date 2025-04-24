@@ -13,7 +13,7 @@ export default class FenwickTree {
       throw new Error('Позиция находится за пределами разрешенного диапазона')
     }
 
-    // magic! :D
+    // magic :D
     for (let i = position; i <= this.size; i += i & -i) {
       this.tree[i] += value
     }
@@ -29,7 +29,7 @@ export default class FenwickTree {
 
     let sum = 0
 
-    // magic! :D
+    // magic :D
     for (let i = position; i > 0; i -= i & -i) {
       sum += this.tree[i]
     }

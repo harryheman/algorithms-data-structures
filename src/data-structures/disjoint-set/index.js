@@ -34,7 +34,7 @@ export default class DisjointSet {
     const root2 = this.find(value2)
 
     if (!root1 || !root2) {
-      throw new Error('Одно или оба значения отсутствуют!')
+      throw new Error('Одно или оба значения отсутствуют')
     }
 
     if (root1 === root2) {

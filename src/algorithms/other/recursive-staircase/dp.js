@@ -1,6 +1,6 @@
 export default function dpRecursiveStaircase(n) {
   if (n < 0) {
-    throw new Error('n меньше нуля!')
+    throw new Error('n меньше нуля')
   }
 
   const steps = new Array(n + 1).fill(0)

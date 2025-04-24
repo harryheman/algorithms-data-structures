@@ -1,12 +1,19 @@
+// Функция для вычисления евклидова расстояния
 import euclideanDistance from '../math/euclidean-distance'
 
+/** Функция принимает:
+ * data   - данные
+ * labels - метки
+ * target - тестовый/целевой образец
+ * k      - количество ближайших соседей
+ */
 export default function kNN(data, labels, target, k = 3) {
   if (!data || !labels || !target) {
-    throw new Error('Отсутствует обязательный параметр!')
+    throw new Error('Отсутствует обязательный параметр')
   }
 
-  // Вычисляем расстояние от target до каждой точки data.
-  // Сохраняем расстояние и метку точки в списке.
+  // Вычисляем расстояние от `target` до каждой точки `data`.
+  // Сохраняем расстояние и метку точки в списке
   const distances = []
 
   for (let i = 0; i < data.length; i++) {
@@ -16,8 +23,8 @@ export default function kNN(data, labels, target, k = 3) {
     })
   }
 
-  // Сортируем список расстояний (от ближайшего к дальнему).
-  // Берем k значений.
+  // Сортируем расстояния по возрастанию (от ближайшего к дальнему).
+  // Берем `k` значений
   const kn = distances
     .sort((a, b) => {
       if (a.distance === b.distance) {
@@ -27,7 +34,7 @@ export default function kNN(data, labels, target, k = 3) {
     })
     .slice(0, k)
 
-  // Считаем количество экземпляров каждого класса.
+  // Считаем количество экземпляров каждого класса
   const _labels = {}
   let topClass = 0
   let topClassCount = 0
@@ -45,6 +52,6 @@ export default function kNN(data, labels, target, k = 3) {
     }
   }
 
-  // Возвращает класс с наибольшим количеством экземпляров.
+  // Возвращает класс с наибольшим количеством экземпляров
   return topClass
 }

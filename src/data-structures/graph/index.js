@@ -56,7 +56,7 @@ export default class Graph {
 
     // Если ребро уже добавлено
     if (this.edges[newEdge.getKey()]) {
-      throw new Error('Ребро уже добавлено!')
+      throw new Error('Ребро уже добавлено')
     } else {
       // Добавляем ребро
       this.edges[newEdge.getKey()] = newEdge

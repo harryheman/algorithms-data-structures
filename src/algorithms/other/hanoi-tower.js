@@ -30,7 +30,7 @@ function hanoiTowerRecursive({
       moveCallback,
     })
 
-    // Перемещаем временную башню с вспомогательного поля в конечный пункт назначения
+    // Перемещаем временную башню со вспомогательного поля в конечный пункт назначения
     hanoiTowerRecursive({
       numberOfDiscs: numberOfDiscs - 1,
       fromPole: withPole,
