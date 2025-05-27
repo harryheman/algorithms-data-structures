@@ -1,7 +1,7 @@
 import squareMatrixRotation from '../square-matrix-rotation'
 
 describe('squareMatrixRotation', () => {
-  it('должен вращать матрицу #0 на месте', () => {
+  it('должен повернуть матрицу #0 на месте', () => {
     const matrix = [[1]]
 
     const rotatedMatrix = [[1]]
@@ -9,7 +9,7 @@ describe('squareMatrixRotation', () => {
     expect(squareMatrixRotation(matrix)).toEqual(rotatedMatrix)
   })
 
-  it('должен вращать матрицу #1 на месте', () => {
+  it('должен повернуть матрицу #1 на месте', () => {
     const matrix = [
       [1, 2],
       [3, 4],
@@ -23,7 +23,7 @@ describe('squareMatrixRotation', () => {
     expect(squareMatrixRotation(matrix)).toEqual(rotatedMatrix)
   })
 
-  it('должен вращать матрицу #2 на месте', () => {
+  it('должен повернуть матрицу #2 на месте', () => {
     const matrix = [
       [1, 2, 3],
       [4, 5, 6],
@@ -39,7 +39,7 @@ describe('squareMatrixRotation', () => {
     expect(squareMatrixRotation(matrix)).toEqual(rotatedMatrix)
   })
 
-  it('должен вращать матрицу #3 на месте', () => {
+  it('должен повернуть матрицу #3 на месте', () => {
     const matrix = [
       [5, 1, 9, 11],
       [2, 4, 8, 10],

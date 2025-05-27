@@ -48,7 +48,7 @@ function nQueensRecursive(solutions, previousPositions, count, rowIndex) {
       // Пробуем поместить следующую королеву
       nQueensRecursive(solutions, positions, count, rowIndex + 1)
 
-      // Очищаем позицию во избежание возврата `false` функцией `isSafe`
+      // Очищаем позицию во избежание возврата `false` функцией `isSafe()`
       positions[rowIndex] = null
     }
   }

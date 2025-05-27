@@ -1,13 +1,13 @@
 import knightTour from '../knight-tour'
 
 describe('knightTour', () => {
-  it('должен проверять отсутствие решения для доски 3x3', () => {
+  it('должен определить отсутствие решения для доски 3x3', () => {
     const moves = knightTour(3)
 
     expect(moves.length).toBe(0)
   })
 
-  it('должен находить решения для доски 5x5', () => {
+  it('должен найти решения для доски 5x5', () => {
     const moves = knightTour(5)
 
     expect(moves.length).toBe(25)

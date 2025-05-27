@@ -1,7 +1,7 @@
 import itRecursiveStaircase from '../it'
 
 describe('itRecursiveStaircase', () => {
-  it('should calculate number of variants using Iterative solution', () => {
+  it('должен вычислить количество вариантов с помощью итеративного подхода', () => {
     expect(() => itRecursiveStaircase(-1)).toThrowError('n меньше нуля')
     expect(itRecursiveStaircase(0)).toBe(0)
     expect(itRecursiveStaircase(1)).toBe(1)

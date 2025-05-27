@@ -1,7 +1,7 @@
 import bfRainTerraces from '../bf'
 
 describe('bfRainTerraces', () => {
-  it('должен находить количество воды, собираемой после дождя', () => {
+  it('должен найти количество воды, собранное после дождя, методом грубой силы', () => {
     expect(bfRainTerraces([1])).toBe(0)
     expect(bfRainTerraces([1, 0])).toBe(0)
     expect(bfRainTerraces([0, 1])).toBe(0)

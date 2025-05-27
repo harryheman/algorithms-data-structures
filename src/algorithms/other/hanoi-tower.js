@@ -12,7 +12,7 @@ function hanoiTowerRecursive({
     const disc = fromPole.pop()
     toPole.push(disc)
   } else {
-    // Берем нижний диск из стека fromPole
+    // Берем нижний диск из стека `fromPole`
     hanoiTowerRecursive({
       numberOfDiscs: numberOfDiscs - 1,
       fromPole,
@@ -21,7 +21,7 @@ function hanoiTowerRecursive({
       moveCallback,
     })
 
-    // Перемещаем этот диск в конечный пункт назначения
+    // Перемещаем этот диск в пункт назначения
     hanoiTowerRecursive({
       numberOfDiscs: 1,
       fromPole,
@@ -30,7 +30,7 @@ function hanoiTowerRecursive({
       moveCallback,
     })
 
-    // Перемещаем временную башню со вспомогательного поля в конечный пункт назначения
+    // Перемещаем временную башню со вспомогательного поля в пункт назначения
     hanoiTowerRecursive({
       numberOfDiscs: numberOfDiscs - 1,
       fromPole: withPole,
@@ -48,10 +48,10 @@ export default function hanoiTower({
   toPole = new Stack(),
   withPole = new Stack(),
 }) {
-  // Каждое из трех полей представляет стек, который может содержать диски.
+  // Каждое из трех полей представляет собой стек, который может содержать диски.
   // Каждый диск представлен числом. БОльшие диски представлены бОльшими числами
 
-  // Создаем диски и помещаем их в стек fromPole
+  // Создаем диски и помещаем их в стек `fromPole`
   for (let i = numberOfDiscs; i > 0; i--) {
     fromPole.push(i)
   }

@@ -1,5 +1,6 @@
 function getMoves(board, position) {
-  // Генерируем все возможные ходы рыцаря (включая те, которые находятся за пределами доски)
+  // Генерируем все возможные ходы рыцаря
+  // (включая те, которые находятся за пределами доски)
   const moves = [
     [position[0] - 1, position[1] - 2],
     [position[0] - 2, position[1] - 1],
@@ -11,7 +12,7 @@ function getMoves(board, position) {
     [position[0] + 2, position[1] + 1],
   ]
 
-  // Отфильтруем ходы, которые выходят за пределы доски
+  // Удаляем ходы, которые выходят за пределы доски
   const boardSize = board.length
   return moves.filter(
     (move) =>
@@ -48,7 +49,8 @@ function knightTourRecursive(board, moves) {
       moves.push(move)
       board[move[0]][move[1]] = 1
 
-      // Если дальнейшие ходы, начиная с текущего являются успешными, значит, решение найдено
+      // Если дальнейшие ходы, начиная с текущего, являются успешными,
+      // значит, решение найдено
       if (knightTourRecursive(board, moves)) {
         return true
       }

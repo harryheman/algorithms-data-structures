@@ -1,5 +1,5 @@
 export default function squareMatrixRotation(matrix) {
-  // Выполняем верх-право/низ-лево диагональное отражение матрицы
+  // Выполняем диагональное отражение матрицы сверху направо/снизу налево
   for (let rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
     for (let colIndex = rowIndex + 1; colIndex < matrix.length; colIndex++) {
       ;[matrix[colIndex][rowIndex], matrix[rowIndex][colIndex]] = [

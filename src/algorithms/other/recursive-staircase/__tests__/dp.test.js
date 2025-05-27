@@ -1,7 +1,7 @@
 import dpRecursiveStaircase from '../dp'
 
 describe('dpRecursiveStaircase', () => {
-  it('должен вычислять количество вариантов с помощью динамического программирования', () => {
+  it('должен вычислить количество вариантов с помощью динамического программирования', () => {
     expect(() => dpRecursiveStaircase(-1)).toThrowError('n меньше нуля')
     expect(dpRecursiveStaircase(0)).toBe(0)
     expect(dpRecursiveStaircase(1)).toBe(1)

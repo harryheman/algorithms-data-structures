@@ -1,7 +1,7 @@
 import mmRecursiveStaircase from '../mm'
 
 describe('mmRecursiveStaircase', () => {
-  it('should calculate number of variants using Brute Force with Memoization', () => {
+  it('должен вычислить количество вариантов методом грубой силы с мемоизацией', () => {
     expect(() => mmRecursiveStaircase(-1)).toThrowError('n меньше нуля')
     expect(mmRecursiveStaircase(0)).toBe(0)
     expect(mmRecursiveStaircase(1)).toBe(1)

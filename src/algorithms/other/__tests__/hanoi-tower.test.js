@@ -2,7 +2,7 @@ import hanoiTower from '../hanoi-tower'
 import Stack from '../../../data-structures/stack'
 
 describe('hanoiTower', () => {
-  it('должен решать задачу с 2 дисками', () => {
+  it('должен решить задачу с 2 дисками', () => {
     const moveCallback = jest.fn()
     const numberOfDiscs = 2
 
@@ -36,7 +36,7 @@ describe('hanoiTower', () => {
     expect(moveCallback.mock.calls[2][2]).toEqual([2])
   })
 
-  it('должен решать задачу с 3 дисками', () => {
+  it('должен решить задачу с 3 дисками', () => {
     const moveCallback = jest.fn()
     const numberOfDiscs = 3
 
@@ -48,7 +48,7 @@ describe('hanoiTower', () => {
     expect(moveCallback).toHaveBeenCalledTimes(2 ** numberOfDiscs - 1)
   })
 
-  it('должен решать задачу с 6 дисками', () => {
+  it('должен решить задачу с 6 дисками', () => {
     const moveCallback = jest.fn()
     const numberOfDiscs = 6
 

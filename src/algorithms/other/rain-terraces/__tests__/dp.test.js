@@ -1,7 +1,7 @@
 import dpRainTerraces from '../dp'
 
 describe('dpRainTerraces', () => {
-  it('должен находить количество воды, собираемой после дождя', () => {
+  it('должен найти количество воды, собранной после дождя, с помощью динамического программирования', () => {
     expect(dpRainTerraces([1])).toBe(0)
     expect(dpRainTerraces([1, 0])).toBe(0)
     expect(dpRainTerraces([0, 1])).toBe(0)
