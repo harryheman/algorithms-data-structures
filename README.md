@@ -1,10 +1,8 @@
 # Структуры данных и алгоритмы на JavaScript
 
-> wip
-
 Структуры данных и алгоритмы, реализованные на JavaScript.
 
-- [Раздел на MyJavaScript](https://my-js.org)
+- [Раздел на MyJavaScript]([https://my-js.org](https://my-js.org/docs/algorithms-data-structures/intro-algorithms))
 - [Источник вдохновения](https://github.com/trekhleb/javascript-algorithms)
 
 ## Запуск
