@@ -2,7 +2,7 @@
 
 Структуры данных и алгоритмы, реализованные на JavaScript.
 
-- [Раздел на MyJavaScript]([https://my-js.org](https://my-js.org/docs/algorithms-data-structures/intro-algorithms))
+- [Раздел на MyJavaScript](https://my-js.org/docs/algorithms-data-structures/intro-algorithms)
 - [Источник вдохновения](https://github.com/trekhleb/javascript-algorithms)
 
 ## Запуск
